@@ -1,7 +1,7 @@
 {
-  "name": "webpack-template",
+  "name": "weather-app",
   "version": "1.0.0",
-  "description": "Reusable JavaScript project template using webpack",
+  "description": "A dynamic weather forecast app using the Visual Crossing API. Toggle between Celsius and Fahrenheit, with live weather-based backgrounds.",
   "main": "./src/index.js",
   "scripts": {
     "clean": "rimraf dist",
@@ -13,10 +13,13 @@
     "prepare": "husky"
   },
   "keywords": [
+    "weather",
+    "forecast",
+    "visual-crossing",
+    "API",
+    "frontend",
     "webpack",
-    "template",
-    "javascript",
-    "starter"
+    "javascript"
   ],
   "author": "nishadnp",
   "license": "ISC",
