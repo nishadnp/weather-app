@@ -19,14 +19,28 @@ function getWeather(city) {
   });
 }
 
+const city = "New York"; // Example city, can be replaced with user input
+
 // Example usage of the getWeather function
-getWeather("Dubai")
-  .then((data) => {
-    console.log("Weather data for Dubai:", data);
-    return data;
+getWeather(city)
+  .then(processWeatherData)
+  .then((cleanData) => {
+    console.log(`Selected weather API data for ${city}:`, cleanData);
   })
   .catch((error) => {
     console.error("Error fetching weather data:", error);
   });
+
+function processWeatherData(data) {
+  // This function can be expanded to process the weather data as needed
+  console.log("Processing weather data...");
+  return {
+    location: data.resolvedAddress,
+    temperature: data.currentConditions.temp,
+    conditions: data.currentConditions.conditions,
+    humidity: data.currentConditions.humidity,
+    icon: data.currentConditions.icon,
+  };
+}
 
 console.log("Webpack is working");
