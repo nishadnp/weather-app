@@ -1,6 +1,8 @@
 // ./src/index.js
 
 import "./styles/base.css";
+import "./styles/layout.css";
+import "./styles/components.css";
 import { getWeather } from "./api/weather";
 import { processWeatherData } from "./utils/processWeatherData";
 
