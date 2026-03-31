@@ -1,6 +1,30 @@
+/* .src/styles/layout.css */
+
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 1rem;
+}
+
+main {
+  display: flex;
+  gap: 1rem;
+}
+
+.stats-sidebar {
+  border: 2px solid blue; /* for temporary visualization */
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.weather-content {
+  border: 2px solid blue; /* for temporary visualization */
+  flex: 3 1 auto;
+  gap: 1rem;
   padding: 1rem;
 }

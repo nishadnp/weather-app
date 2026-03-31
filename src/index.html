@@ -10,7 +10,7 @@
   <body>
     <header class="main-header">
       <img
-        src="./assets/images/web-logo.png"
+        src="./assets/images/site-logo.png"
         alt="Day and Night Weather App logo"
         class="page-logo"
       />
@@ -30,6 +30,53 @@
     </header>
     <!-- Simple form to input city name for fetching weather data -->
 
-    <main></main>
+    <main>
+      <aside class="stats-sidebar">
+        <h2>Today Highlights</h2>
+        <div class="highlights-grid">
+          <article class="highlight-card">
+            <div>
+              <img
+                src="./assets/images/icons/windspeed-icon.svg"
+                alt="Wind Speed icon"
+                class="highlight-icon"
+              />
+              <h4>Wind Speed</h4>
+            </div>
+          </article>
+          <article class="highlight-card">
+            <div>
+              <img
+                src="./assets/images/icons/humidity-icon.svg"
+                alt="Humidity icon"
+                class="highlight-icon"
+              />
+              <h4>Humidity</h4>
+            </div>
+          </article>
+          <article class="highlight-card">
+            <div>
+              <img
+                src="./assets/images/icons/uv-icon.svg"
+                alt="UV Index icon"
+                class="highlight-icon"
+              />
+              <h4>UV Index</h4>
+            </div>
+          </article>
+          <article class="highlight-card">
+            <div>
+              <img
+                src="./assets/images/icons/visibility-icon.svg"
+                alt="Visibility icon"
+                class="highlight-icon"
+              />
+              <h4>Visibility</h4>
+            </div>
+          </article>
+        </div>
+      </aside>
+      <section class="weather-content"></section>
+    </main>
   </body>
 </html>

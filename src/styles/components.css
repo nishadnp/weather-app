@@ -3,3 +3,33 @@
   height: auto;
   margin-bottom: 10px;
 }
+
+/* Sidebar grid (component-level layout) */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+/* Cards */
+.highlight-card {
+  height: 120px;
+  padding: 0.5rem;
+  border: 2px solid red; /* for temporary visualization */
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* icons of highlight cards */
+.highlight-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.highlight-card h4 {
+  display: inline;
+}
