@@ -4,11 +4,19 @@
 export function processWeatherData(data) {
   // This function can be expanded to process the weather data as needed
   console.log("Processing weather data...");
+
+  const currentConditions = data.currentConditions;
+
+  // Extract and return the relevant weather information in a structured format
   return {
+    date: currentConditions.datetime,
     location: data.resolvedAddress,
-    temperature: data.currentConditions.temp,
-    conditions: data.currentConditions.conditions,
-    humidity: data.currentConditions.humidity,
-    icon: data.currentConditions.icon,
+    currentTemperature: currentConditions.temp,
+    conditions: currentConditions.conditions,
+    humidity: currentConditions.humidity,
+    icon: currentConditions.icon,
+    windSpeed: currentConditions.windspeed,
+    visibility: currentConditions.visibility,
+    uvIndex: currentConditions.uvindex,
   };
 }
