@@ -6,13 +6,17 @@ export function processWeatherData(data) {
   console.log("Processing weather data...");
 
   const currentConditions = data.currentConditions;
+  const today = data.days[0]; // today’s forecast
 
   // Extract and return the relevant weather information in a structured format
   return {
-    date: currentConditions.datetime,
+    date: today.datetime,
     location: data.resolvedAddress,
     currentTemperature: currentConditions.temp,
+    lowestTemperature: today.tempmin,
+    highestTemperature: today.tempmax,
     conditions: currentConditions.conditions,
+    description: today.description,
     humidity: currentConditions.humidity,
     icon: currentConditions.icon,
     windSpeed: currentConditions.windspeed,
