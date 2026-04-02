@@ -33,3 +33,68 @@
 .highlight-card h4 {
   display: inline;
 }
+
+.weather-info-wrapper {
+  margin-top: 80px;
+  height: fit-content;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-info-wrapper > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weather-icon {
+  width: 127px;
+  height: 127px;
+  border-radius: 50%;
+}
+
+.weather-condition {
+  font-size: 5rem;
+  max-width: 15ch;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.weather-description {
+  font-size: 1.2rem;
+  max-width: 45ch;
+}
+
+.temperature-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.temperature-current {
+  font-size: 6rem;
+  margin: 0;
+}
+
+.temperature-range p {
+  margin: 0.3rem;
+  display: flex;
+  padding: 0.3rem;
+  min-width: 100px;
+  justify-content: space-between;
+  border-radius: 20px;
+  border: 2px solid red; /* for temporary visualization */
+}
+
+.location-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.location-icon {
+  width: 25px;
+  height: 25px;
+}

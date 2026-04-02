@@ -22,9 +22,8 @@ main {
   padding: 1rem;
 }
 
-.weather-content {
+#weather-hero-display {
   border: 2px solid blue; /* for temporary visualization */
   flex: 3 1 auto;
-  gap: 1rem;
   padding: 1rem;
 }

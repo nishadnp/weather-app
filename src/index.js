@@ -6,6 +6,7 @@ import "./styles/components.css";
 import { getWeather } from "./api/weather";
 import { processWeatherData } from "./utils/processWeatherData";
 import { renderSideBar } from "./components/sidebar";
+import { renderWeatherContent } from "./components/weatherContent";
 
 // Event listener for the weather form submission
 document.getElementById("weather-form").addEventListener("submit", (event) => {
@@ -18,6 +19,7 @@ document.getElementById("weather-form").addEventListener("submit", (event) => {
     .then((processedData) => {
       console.log(`Selected weather API data for ${city}: `, processedData);
       renderSideBar(processedData);
+      renderWeatherContent(processedData);
     })
     .catch((error) => {
       console.error("Error fetching or processing weather data:", error);
@@ -27,5 +29,4 @@ document.getElementById("weather-form").addEventListener("submit", (event) => {
 });
 
 // Example usage of the getWeather function
-
 console.log("Webpack is working");

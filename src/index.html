@@ -37,7 +37,7 @@
           <article class="highlight-card">
             <div>
               <img
-                src="./assets/images/icons/windspeed-icon.svg"
+                src="./assets/icons/windspeed-icon.svg"
                 alt="Wind Speed icon"
                 class="highlight-icon"
               />
@@ -47,7 +47,7 @@
           <article class="highlight-card">
             <div>
               <img
-                src="./assets/images/icons/humidity-icon.svg"
+                src="./assets/icons/humidity-icon.svg"
                 alt="Humidity icon"
                 class="highlight-icon"
               />
@@ -57,7 +57,7 @@
           <article class="highlight-card">
             <div>
               <img
-                src="./assets/images/icons/uv-icon.svg"
+                src="./assets/icons/uv-icon.svg"
                 alt="UV Index icon"
                 class="highlight-icon"
               />
@@ -67,7 +67,7 @@
           <article class="highlight-card">
             <div>
               <img
-                src="./assets/images/icons/visibility-icon.svg"
+                src="./assets/icons/visibility-icon.svg"
                 alt="Visibility icon"
                 class="highlight-icon"
               />
@@ -76,7 +76,43 @@
           </article>
         </div>
       </aside>
-      <section class="weather-content"></section>
+      <section id="weather-hero-display">
+        <div class="weather-info-wrapper">
+          <div>
+            <img
+              src="https://via.placeholder.com/150"
+              alt="failed to load"
+              class="weather-icon"
+            />
+            <p class="weather-condition">Not Available</p>
+          </div>
+          <p class="weather-description">
+            Search for a city to get weather information
+          </p>
+        </div>
+        <div class="temperature-wrapper">
+          <p class="temperature-current">_____</p>
+
+          <div class="temperature-range">
+            <p>
+              <span>H</span>
+              <span class="temperature-highest">-------</span>
+            </p>
+            <p>
+              <span>L</span>
+              <span class="temperature-lowest">-------</span>
+            </p>
+          </div>
+        </div>
+        <div class="location-wrapper">
+          <img
+            src="./assets/icons/location.svg"
+            alt="Location icon"
+            class="location-icon"
+          />
+          <p class="location">____________________</p>
+        </div>
+      </section>
     </main>
   </body>
 </html>
