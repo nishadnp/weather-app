@@ -37,7 +37,6 @@ main > * {
   grid-area: extras;
 }
 
-#weekly-forecast {
+#nextdays-forecast {
   grid-area: forecast;
-  gap: 1rem;
 }

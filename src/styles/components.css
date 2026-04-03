@@ -15,7 +15,7 @@
 .highlight-card {
   height: 120px;
   padding: 0.5rem;
-  border: 2px solid red; /* for temporary visualization */
+  border: 2px solid blue; /* for temporary visualization */
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -97,4 +97,38 @@
 .location-icon {
   width: 25px;
   height: 25px;
+}
+
+#nextdays-forecast ul {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.8rem;
+}
+
+#nextdays-forecast li {
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.forecast-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10%;
+  min-width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.forecast-card p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
