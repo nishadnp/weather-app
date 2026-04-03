@@ -11,19 +11,21 @@ const elements = {
 };
 
 export function renderWeatherContent(processedData) {
-  setWeatherIcon(processedData.icon);
+  setWeatherIcon(processedData.today.icon);
 
-  elements.weatherCondition.textContent = processedData.conditions ?? "N/A";
-  elements.weatherDescription.textContent = processedData.description ?? "N/A";
+  elements.weatherCondition.textContent =
+    processedData.today.conditions ?? "N/A";
+  elements.weatherDescription.textContent =
+    processedData.today.description ?? "N/A";
 
   elements.currentTemperature.textContent =
-    processedData.currentTemperature ?? "N/A";
+    processedData.today.currentTemperature ?? "N/A";
   elements.lowestTemperature.textContent =
-    processedData.lowestTemperature ?? "N/A";
+    processedData.today.lowestTemperature ?? "N/A";
   elements.highestTemperature.textContent =
-    processedData.highestTemperature ?? "N/A";
+    processedData.today.highestTemperature ?? "N/A";
 
-  elements.currentLocation.textContent = processedData.location ?? "N/A";
+  elements.currentLocation.textContent = processedData.today.location ?? "N/A";
 }
 
 function setWeatherIcon(iconName) {
