@@ -32,6 +32,8 @@ export function processWeatherData(data) {
       windSpeed: currentConditions.windspeed,
       visibility: currentConditions.visibility,
       uvIndex: currentConditions.uvindex,
+      sunrise: today.sunrise,
+      sunset: today.sunset,
     },
     nextFiveDays,
   };

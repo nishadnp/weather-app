@@ -132,3 +132,60 @@
   font-weight: 700;
   font-size: 1.1rem;
 }
+
+#extras > article {
+  flex: 1;
+  border: 2px dashed green; /* for temporary visualization */
+  border-radius: 10px;
+}
+
+.sunrise-sunset-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sunrise-sunset-container > h3 {
+  margin: 0 0 1rem 0;
+}
+
+.sunrise-sunset-container > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.sunrise-sunset-wrapper {
+  margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sunrise-info,
+.sunset-info {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  justify-content: end;
+}
+
+.sunrise-info {
+  align-items: start;
+}
+
+.sunset-info {
+  align-items: end;
+}
+
+:where(.sunrise-info, .sunset-info) > * {
+  margin: 0;
+}
+
+.bi {
+  /* in-built class of bootstrap SVGs  */
+  color: #ffffff;
+}
+
+.twilight {
+  max-width: 50%;
+}

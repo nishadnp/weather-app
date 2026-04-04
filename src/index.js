@@ -8,6 +8,7 @@ import { processWeatherData } from "./utils/processWeatherData";
 import { renderSideBar } from "./components/sidebar";
 import { renderWeatherContent } from "./components/weatherContent";
 import { renderNextDaysForecast } from "./components/nextdaysForecast";
+import { renderExtras } from "./components/extras";
 
 // Event listener for the weather form submission
 document.getElementById("weather-form").addEventListener("submit", (event) => {
@@ -21,6 +22,7 @@ document.getElementById("weather-form").addEventListener("submit", (event) => {
       console.log(`Selected weather API data for ${city}: `, processedData);
       renderSideBar(processedData);
       renderWeatherContent(processedData);
+      renderExtras(processedData);
       renderNextDaysForecast(processedData);
     })
     .catch((error) => {
