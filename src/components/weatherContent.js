@@ -19,11 +19,19 @@ export function renderWeatherContent(processedData) {
     processedData.today.description ?? "N/A";
 
   elements.currentTemperature.textContent =
-    processedData.today.currentTemperature ?? "N/A";
-  elements.lowestTemperature.textContent =
-    processedData.today.lowestTemperature ?? "N/A";
+    processedData.today.currentTemperature != null
+      ? `${processedData.today.currentTemperature}°`
+      : "N/A";
+
   elements.highestTemperature.textContent =
-    processedData.today.highestTemperature ?? "N/A";
+    processedData.today.currentTemperature != null
+      ? `${processedData.today.highestTemperature}°`
+      : "N/A";
+
+  elements.lowestTemperature.textContent =
+    processedData.today.currentTemperature != null
+      ? `${processedData.today.lowestTemperature}°`
+      : "N/A";
 
   elements.currentLocation.textContent = processedData.today.location ?? "N/A";
 }
