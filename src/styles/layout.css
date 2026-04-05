@@ -1,24 +1,19 @@
 /* .src/styles/layout.css */
 
+body {
+  display: grid;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 8fr;
+  gap: 1rem;
+}
+
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
-}
-
-main {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: minmax(250px, 1fr) 2fr minmax(250px, 1fr);
-  grid-template-rows: 2fr 1fr;
-  grid-template-areas:
-    "sidebar hero extras"
-    "sidebar forecast forecast";
-}
-
-main > * {
-  outline: 1px dashed red; /* for temporary visualization */
 }
 
 #stats-sidebar {
@@ -26,11 +21,29 @@ main > * {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  border: 2px dotted darkmagenta;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-areas:
+    "hero extras"
+    "forecast forecast";
+  grid-template-rows: 2fr 1fr;
+  grid-template-columns: 2fr minmax(280px, 1fr);
+  gap: 1rem;
+}
+
+main > * {
+  outline: 1px dashed red; /* for temporary visualization */
 }
 
 #weather-hero-display {
   grid-area: hero;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 #extras {
