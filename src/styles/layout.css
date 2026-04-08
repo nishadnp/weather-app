@@ -1,5 +1,10 @@
-/* .src/styles/layout.css */
+/* src/styles/layout.css */
 
+/* =========================
+   LAYOUT
+   ========================= */
+
+/* App layout grid (sidebar + header + main content regions) */
 body {
   display: grid;
   grid-template-areas:
@@ -10,13 +15,13 @@ body {
   gap: 1rem;
 }
 
-.main-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#stats-sidebar {
+.sidebar {
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
@@ -24,6 +29,7 @@ body {
   border: 2px dotted darkmagenta;
 }
 
+/* Main content layout (hero + insights + forecast sections) */
 main {
   grid-area: main;
   display: grid;
@@ -35,24 +41,23 @@ main {
   gap: 1rem;
 }
 
-main > * {
-  outline: 1px dashed red; /* for temporary visualization */
-}
-
-#weather-hero-display {
+/* App layout grid (sidebar + header + main content regions) */
+.weather-hero {
   grid-area: hero;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-#extras {
+/* Secondary insights panel (wind + astronomy modules) */
+.insights {
   grid-area: extras;
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
 }
 
-#nextdays-forecast {
+/* Bottom forecast panel */
+.forecast {
   grid-area: forecast;
 }

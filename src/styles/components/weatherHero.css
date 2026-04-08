@@ -1,0 +1,68 @@
+/* src/styles/components/weatherHero.css */
+
+/* =========================
+   WEATHER HERO COMPONENT
+   ========================= */
+
+/* Weather hero: primary weather display (condition, temperature, location) */
+
+.weather-hero__info {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-hero__header {
+  display: flex;
+  align-items: center;
+}
+
+.weather-hero__icon {
+  width: 127px;
+  height: 127px;
+  border-radius: 50%;
+}
+
+.weather-hero__condition {
+  font-size: 5rem;
+  max-width: 15ch;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.weather-hero__description {
+  font-size: 1.2rem;
+  max-width: 45ch;
+}
+
+.weather-hero__temperature {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.weather-hero__temperature-current {
+  font-size: 6rem;
+  margin: 0;
+}
+
+.weather-hero__temperature-range p {
+  margin: 0.3rem;
+  display: flex;
+  padding: 0.3rem;
+  min-width: 100px;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+
+.weather-hero__location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-hero__location-icon {
+  width: 25px;
+  height: 25px;
+}

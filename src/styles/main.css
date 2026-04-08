@@ -1,0 +1,14 @@
+/* src/styles/main.css */
+
+@import "./base.css";
+
+@import "./layout.css";
+
+/* Component-based stylesheet entry (import order defines cascade priority) */
+@import "./components/header.css";
+@import "./components/sidebar.css";
+@import "./components/weatherHero.css";
+@import "./components/insights.css";
+@import "./components/nextdaysForecast.css";
+
+@import "./helper.css";

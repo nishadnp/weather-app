@@ -1,0 +1,61 @@
+/* src/styles/components/insights.css */
+
+/* =========================
+   INSIGHTS
+   ========================= */
+
+/* Insights: secondary weather data (wind + astronomy modules) */
+
+/* Sun module: sunrise/sunset visualization block */
+.sun {
+  flex: 1;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sun__title {
+  margin: 0 0 1rem 0;
+}
+
+.sun__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.sun__events {
+  margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sun__event {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  justify-content: end;
+}
+
+.sun__event--sunrise {
+  align-items: start;
+}
+
+.sun__event--sunset {
+  align-items: end;
+}
+
+.sun__event p,
+.sun__event svg {
+  margin: 0;
+}
+
+.bi {
+  /* in-built class of bootstrap SVGs  */
+  color: #ffffff;
+}
+
+.sun__decoration {
+  max-width: 50%;
+}

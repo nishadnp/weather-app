@@ -1,0 +1,35 @@
+/* src/styles/components/sidebar.css */
+
+/* =========================
+   SIDEBAR COMPONENT
+   ========================= */
+
+/* Sidebar: highlights grid (weather metrics cards) */
+
+/* highlights grid (component-level layout) */
+.highlights__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.highlights-card {
+  height: 120px;
+  padding: 0.5rem;
+  border: 2px solid blue; /* for temporary visualization */
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.highlights-card__icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.highlights-card__title {
+  display: inline;
+}

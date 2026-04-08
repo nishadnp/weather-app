@@ -1,16 +1,18 @@
-// src/components/weatherContent.js
+// src/components/weatherHero.js
 
 const elements = {
-  weatherIcon: document.querySelector(".weather-icon"),
-  weatherCondition: document.querySelector(".weather-condition"),
-  weatherDescription: document.querySelector(".weather-description"),
-  currentTemperature: document.querySelector(".temperature-current"),
-  highestTemperature: document.querySelector(".temperature-highest"),
-  lowestTemperature: document.querySelector(".temperature-lowest"),
-  currentLocation: document.querySelector(".location"),
+  weatherIcon: document.querySelector(".weather-hero__icon"),
+  weatherCondition: document.querySelector(".weather-hero__condition"),
+  weatherDescription: document.querySelector(".weather-hero__description"),
+  currentTemperature: document.querySelector(
+    ".weather-hero__temperature-current"
+  ),
+  highestTemperature: document.querySelector(".weather-hero__temperature-high"),
+  lowestTemperature: document.querySelector(".weather-hero__temperature-low"),
+  currentLocation: document.querySelector(".weather-hero__location-text"),
 };
 
-export function renderWeatherContent(processedData) {
+export function renderWeatherHero(processedData) {
   setWeatherIcon(processedData.today.icon);
 
   elements.weatherCondition.textContent =

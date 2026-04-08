@@ -1,9 +1,9 @@
-// ./src/components/nextdaysForecast.js
+// src/components/nextdaysForecast.js
 
 const elements = {
-  forecastCardElements: document.querySelectorAll(".forecast-card"),
-  tempMaxElements: document.querySelectorAll(".forecast-tempmax"),
-  dayNameElements: document.querySelectorAll(".forecast-dayname"),
+  forecastCardElements: document.querySelectorAll(".forecast__card"),
+  tempMaxElements: document.querySelectorAll(".forecast__temp-max"),
+  dayNameElements: document.querySelectorAll(".forecast__day-name"),
 };
 
 export function renderNextDaysForecast(processedData) {

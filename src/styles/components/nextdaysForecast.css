@@ -1,0 +1,41 @@
+/* src/styles/components/nextdaysForecast.css */
+
+/* =========================
+   FORECAST
+   ========================= */
+
+/* Forecast: multi-day weather cards layout */
+.forecast__list {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.forecast__item {
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.forecast__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10%;
+  min-width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.forecast__card p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}

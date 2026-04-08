@@ -12,7 +12,7 @@ export function renderSideBar(processedData) {
     visibility: "miles",
   };
 
-  const highlightCards = document.querySelectorAll(".highlight-card");
+  const highlightCards = document.querySelectorAll(".highlights-card");
 
   // Loop through the highlight cards and populate them with the corresponding weather data
   highlightCards.forEach((highlightCard, index) => {

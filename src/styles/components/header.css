@@ -1,0 +1,13 @@
+/* src/styles/components/header.css */
+
+/* =========================
+   BASE
+   ========================= */
+
+/* Header component styles (logo, search form, status display) */
+
+.header__logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}

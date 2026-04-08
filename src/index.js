@@ -1,17 +1,17 @@
-// ./src/index.js
+// src/index.js
 
-import "./styles/base.css";
-import "./styles/layout.css";
-import "./styles/components.css";
+import "./styles/main.css";
+
 import { getWeather } from "./api/weather";
 import { processWeatherData } from "./utils/processWeatherData";
+
 import { renderSideBar } from "./components/sidebar";
-import { renderWeatherContent } from "./components/weatherContent";
+import { renderWeatherHero } from "./components/weatherHero";
+import { renderInsights } from "./components/insights";
 import { renderNextDaysForecast } from "./components/nextdaysForecast";
-import { renderExtras } from "./components/extras";
 
 // Event listener for the weather form submission
-document.getElementById("weather-form").addEventListener("submit", (event) => {
+document.querySelector(".header__form").addEventListener("submit", (event) => {
   event.preventDefault();
   const cityInput = document.getElementById("cityInput");
   const city = cityInput.value;
@@ -21,8 +21,8 @@ document.getElementById("weather-form").addEventListener("submit", (event) => {
     .then((processedData) => {
       console.log(`Selected weather API data for ${city}: `, processedData);
       renderSideBar(processedData);
-      renderWeatherContent(processedData);
-      renderExtras(processedData);
+      renderWeatherHero(processedData);
+      renderInsights(processedData);
       renderNextDaysForecast(processedData);
     })
     .catch((error) => {
