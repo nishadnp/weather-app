@@ -11,3 +11,93 @@
   height: auto;
   margin-bottom: 10px;
 }
+
+/* Container for the form */
+.header__form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05); /* Very subtle white tint */
+  /* eslint-disable-next-line css/use-baseline */
+  backdrop-filter: blur(12px); /* The "Glass" effect */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Thin "Apple-style" edge */
+  border-radius: 25px;
+  padding: 4px 8px 4px 16px;
+  width: 100%;
+  max-width: 400px; /* Adjust based on your layout */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover/Focus state to feel "Live" */
+.header__form:focus-within {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+/* The Label/Input Wrapper */
+.header__form label {
+  flex: 1;
+  display: flex;
+}
+
+/* The actual text input */
+.header__input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  /* eslint-disable-next-line css/font-family-fallbacks */
+  font-family: inherit;
+  font-size: 0.95rem;
+  width: 100%;
+  padding: 8px 0;
+}
+
+/* Placeholder styling */
+.header__input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+}
+
+.header__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  -webkit-text-fill-color: #fff;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* The Search Button */
+.header__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.header__button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header__button > svg {
+  fill: #e3e3e3;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.header__button:hover > svg {
+  opacity: 1;
+}
+
+.header__date {
+  min-width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
