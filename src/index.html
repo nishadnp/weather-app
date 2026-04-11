@@ -17,7 +17,7 @@
       />
 
       <!-- Simple form to input location for fetching weather data -->
-      <form class="header__form">
+      <form class="header__form glass-panel">
         <label for="locationInput" class="visually-hidden"
           >Enter location:
         </label>
@@ -44,7 +44,7 @@
           </svg>
         </button>
       </form>
-      <div class="header__date">
+      <div class="header__date glass-panel">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"
@@ -61,11 +61,11 @@
     </header>
 
     <!-- Sidebar: weather highlights (wind, humidity, UV, visibility) -->
-    <aside class="sidebar debug--component">
+    <aside class="sidebar glass-panel debug--component">
       <section class="highlights">
         <h2 class="highlights__title">Today Highlights</h2>
         <div class="highlights__grid debug--card">
-          <article class="highlights-card">
+          <article class="highlights-card glass-panel">
             <div class="highlights-card__header">
               <img
                 src="./assets/icons/windspeed-icon.svg"
@@ -75,7 +75,7 @@
               <h4 class="highlights-card__title">Wind Speed</h4>
             </div>
           </article>
-          <article class="highlights-card">
+          <article class="highlights-card glass-panel">
             <div class="highlights-card__header">
               <img
                 src="./assets/icons/humidity-icon.svg"
@@ -85,7 +85,7 @@
               <h4 class="highlights-card__title">Humidity</h4>
             </div>
           </article>
-          <article class="highlights-card">
+          <article class="highlights-card glass-panel">
             <div class="highlights-card__header">
               <img
                 src="./assets/icons/uv-icon.svg"
@@ -95,7 +95,7 @@
               <h4 class="highlights-card__title">UV Index</h4>
             </div>
           </article>
-          <article class="highlights-card">
+          <article class="highlights-card glass-panel">
             <div class="highlights-card__header">
               <img
                 src="./assets/icons/visibility-icon.svg"
@@ -129,11 +129,11 @@
           <p class="weather-hero__temperature-current">_____</p>
 
           <div class="weather-hero__temperature-range">
-            <p>
+            <p class="glass-panel">
               <span>H</span>
               <span class="weather-hero__temperature-high">-------</span>
             </p>
-            <p>
+            <p class="glass-panel">
               <span>L</span>
               <span class="weather-hero__temperature-low">-------</span>
             </p>
@@ -153,7 +153,7 @@
       <section class="insights debug--card">
         <article class="insights__wind"></article>
         <!-- Sun module: sunrise/sunset visualization (static now, animated later) -->
-        <article class="insights__astronomy astronomy--sun">
+        <article class="insights__astronomy astronomy--sun glass-panel">
           <!-- Sun module: sunrise/sunset visualization (static now, animated later) -->
           <div class="sun">
             <h3 class="sun__title">Sunrise & Sunset</h3>

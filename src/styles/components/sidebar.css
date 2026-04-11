@@ -5,6 +5,9 @@
    ========================= */
 
 /* Sidebar: highlights grid (weather metrics cards) */
+.sidebar {
+  border-radius: 30px;
+}
 
 /* highlights grid (component-level layout) */
 .highlights__grid {

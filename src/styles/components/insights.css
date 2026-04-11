@@ -5,6 +5,9 @@
    ========================= */
 
 /* Insights: secondary weather data (wind + astronomy modules) */
+.insights > * {
+  border-radius: 20px;
+}
 
 /* Sun module: sunrise/sunset visualization block */
 .sun {

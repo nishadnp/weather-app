@@ -16,24 +16,16 @@
 .header__form {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05); /* Very subtle white tint */
-  /* eslint-disable-next-line css/use-baseline */
-  backdrop-filter: blur(12px); /* The "Glass" effect */
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Thin "Apple-style" edge */
-  border-radius: 25px;
+  border-radius: 25px; /* Component-specific shape */
   padding: 4px 8px 4px 16px;
   width: 100%;
-  max-width: 400px; /* Adjust based on your layout */
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
 }
 
-/* Hover/Focus state to feel "Live" */
+/* Specific hover behavior for the form */
 .header__form:focus-within {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
 /* The Label/Input Wrapper */
@@ -99,5 +91,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  padding: 0 0.9rem;
+  border-radius: 40px;
 }
