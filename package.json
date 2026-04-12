@@ -50,6 +50,8 @@
     ]
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/plus-jakarta-sans": "^5.2.8",
     "date-fns": "^4.1.0"
   }
 }

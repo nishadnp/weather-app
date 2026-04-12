@@ -17,6 +17,7 @@
 }
 
 .highlights-card {
+  font-weight: 600;
   height: 120px;
   padding: 0.5rem;
   border: 2px solid blue; /* for temporary visualization */

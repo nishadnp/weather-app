@@ -87,6 +87,7 @@
 }
 
 .header__date {
+  font-weight: 500;
   min-width: fit-content;
   display: flex;
   align-items: center;

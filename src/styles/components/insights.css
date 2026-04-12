@@ -37,7 +37,6 @@
 .sun__event {
   display: flex;
   flex-direction: column;
-  font-weight: 500;
   justify-content: end;
 }
 
@@ -52,6 +51,11 @@
 .sun__event p,
 .sun__event svg {
   margin: 0;
+}
+
+.sun__event-time {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .bi {

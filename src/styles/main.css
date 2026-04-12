@@ -12,3 +12,12 @@
 @import "./components/nextdaysForecast.css";
 
 @import "./utilities.css";
+
+@import "@fontsource/inter/300.css"; /* Light - for 39-hour labels */
+@import "@fontsource/inter/400.css"; /* Regular: Default body, Date, Search */
+@import "@fontsource/inter/500.css"; /* Medium: Current Time, Condition */
+@import "@fontsource/inter/600.css"; /* Semi-bold - for data metrics */
+
+@import "@fontsource/plus-jakarta-sans/600.css"; /* Semi-Bold: H-L Capsules */
+@import "@fontsource/plus-jakarta-sans/700.css"; /* Bold: City Name, Titles */
+@import "@fontsource/plus-jakarta-sans/800.css"; /* Extra Bold: Main Temperature */

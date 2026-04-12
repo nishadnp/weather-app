@@ -36,6 +36,9 @@
 
 .forecast__card p {
   margin: 0;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.1rem;
+  /* eslint-disable-next-line css/no-invalid-properties */
+  font-family: var(--font-jakarta);
+  font-variant-numeric: tabular-nums;
 }
