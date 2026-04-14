@@ -1,5 +1,7 @@
 // src/utils/processWeatherData.js
 
+import { isSameHour } from "date-fns";
+
 // Function to process the weather data received from the API
 export function processWeatherData(data) {
   console.log(data);
@@ -8,6 +10,11 @@ export function processWeatherData(data) {
 
   const currentConditions = data.currentConditions; // current weather conditions
   const today = data.days[1]; // today’s forecast
+
+  // Yesterday, today and tomorrow
+  const daysAroundToday = data.days.slice(0, 3);
+
+  const centered39hWindow = getCentered39hWindow(daysAroundToday);
 
   // Process the next five days' brief forecast
   const nextFiveDays = data.days.slice(2, 7).map((day) => ({
@@ -37,5 +44,20 @@ export function processWeatherData(data) {
       sunset: today.sunset,
     },
     nextFiveDays,
+    centered39hWindow,
   };
+}
+
+function getCentered39hWindow(days) {
+  const hours = days.flatMap((d) => d.hours);
+  const currentHourIndex = hours.findIndex((hour) =>
+    isSameHour(new Date(), new Date(hour.datetimeEpoch * 1000))
+  );
+  if (currentHourIndex === -1) {
+    console.warn("Current hour not found");
+    return [];
+  }
+  const rightHalf = hours.slice(currentHourIndex, currentHourIndex + 19 + 1);
+  const leftHalf = hours.slice(currentHourIndex - 19, currentHourIndex);
+  return [...leftHalf, ...rightHalf];
 }

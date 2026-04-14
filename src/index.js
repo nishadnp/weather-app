@@ -37,5 +37,4 @@ document.querySelector(".header__form").addEventListener("submit", (event) => {
   locationInput.value = ""; // Clear the input field after submission
 });
 
-// Example usage of the getWeather function
 console.log("Webpack is working");

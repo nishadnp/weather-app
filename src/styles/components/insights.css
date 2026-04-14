@@ -5,8 +5,67 @@
    ========================= */
 
 /* Insights: secondary weather data (wind + astronomy modules) */
+.insights__wind {
+  padding: 0 1rem;
+}
+
+.insights__header {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .insights > * {
   border-radius: 20px;
+}
+
+.insights__stats {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.insights__label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.measurement-unit {
+  font-size: 0.85rem;
+}
+
+.wind-chart {
+  width: 100%;
+}
+
+.wind-chart__bar {
+  width: 2px;
+  transition:
+    opacity 0.2s ease,
+    filter 0.2s ease;
+  cursor: pointer;
+}
+
+.wind-chart__bar:hover {
+  /* Brighten the bar on hover */
+  opacity: 1;
+  /* Add a subtle glow effect */
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
+
+.wind-chart__trendline {
+  fill: none;
+  stroke: rgba(0, 255, 255, 0.8);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 2; /* 4px dash, 2px gap */
+  stroke-linecap: round;
+  cursor: pointer;
+}
+
+.wind-chart__trendline:hover {
+  filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.5));
 }
 
 /* Sun module: sunrise/sunset visualization block */

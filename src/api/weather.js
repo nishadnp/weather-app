@@ -8,6 +8,7 @@ const API_CONFIG = Object.freeze({
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline",
   apiKey: "HBDN9AQH5UV6PCLDBRWTDA63D",
   defaultUnit: "us",
+  elements: "&elements=add:windspeedmax",
 });
 
 // Fetch weather data for a location
@@ -19,11 +20,10 @@ export function getWeather(locationQuery) {
 
   const dateRange = get7DayRangeFromYesterday();
 
+  const url = `${API_CONFIG.baseURL}/${safeLocation}/${dateRange}?unitGroup=${API_CONFIG.defaultUnit}${API_CONFIG.elements}&key=${API_CONFIG.apiKey}&contentType=json`;
   console.log("Fetching weather data...");
 
-  return fetch(
-    `${API_CONFIG.baseURL}/${safeLocation}/${dateRange}?unitGroup=${API_CONFIG.defaultUnit}&key=${API_CONFIG.apiKey}&contentType=json`
-  ).then((response) => {
+  return fetch(url).then((response) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
