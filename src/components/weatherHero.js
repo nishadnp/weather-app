@@ -46,7 +46,6 @@ function setWeatherIcon(iconName) {
 
   import(`../assets/icons/WeatherIcons-VisualCrossing-v4/${iconName}.svg`)
     .then((module) => {
-      console.log(`Loaded icon for ${iconName}:`, module.default);
       elements.weatherIcon.src = module.default;
     })
     .catch((error) => {

@@ -24,7 +24,6 @@ function setForecastIcon(iconName, index) {
 
   import(`../assets/icons/WeatherIcons-VisualCrossing-v4/${iconName}.svg`)
     .then((module) => {
-      console.log(`Loaded icon for ${iconName}:`, module.default);
       elements.forecastCardElements[index].style.backgroundImage =
         `url(${module.default})`;
     })
