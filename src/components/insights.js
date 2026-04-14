@@ -13,9 +13,9 @@ const elements = {
 };
 
 export function renderInsights(processedData) {
-  elements.sunriseTimeText.textContent = processedData.today.sunrise ?? "N/A";
+  elements.sunriseTimeText.textContent = processedData.sunrise ?? "N/A";
 
-  elements.sunsetTimeText.textContent = processedData.today.sunset ?? "N/A";
+  elements.sunsetTimeText.textContent = processedData.sunset ?? "N/A";
 
   const totalHours = processedData.centered39hWindow.length;
   const currentHour = (totalHours - 1) / 2;

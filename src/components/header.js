@@ -11,7 +11,7 @@ const dom = {
 
 export function renderHeader(processedData) {
   // Safely access date from processed weather data
-  const day = processedData?.today?.date;
+  const day = processedData?.date;
 
   const el = dom.dateEl;
 

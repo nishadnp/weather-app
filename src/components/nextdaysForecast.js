@@ -7,7 +7,7 @@ const elements = {
 };
 
 export function renderNextDaysForecast(processedData) {
-  processedData.nextFiveDays.forEach((day, index) => {
+  processedData.forEach((day, index) => {
     if (index < elements.tempMaxElements.length) {
       elements.tempMaxElements[index].textContent =
         day.highestTemperature != null ? `${day.highestTemperature}°` : "N/A";

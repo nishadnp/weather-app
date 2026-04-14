@@ -25,6 +25,6 @@ export function renderSideBar(processedData) {
       text.style.fontSize = "1.5rem";
     }
 
-    text.textContent = processedData.today[keys[index]] + units[keys[index]];
+    text.textContent = processedData[keys[index]] + units[keys[index]];
   });
 }

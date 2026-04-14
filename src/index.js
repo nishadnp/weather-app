@@ -5,7 +5,7 @@
 import "./styles/main.css";
 
 import { getWeather } from "./api/weather";
-import { processWeatherData } from "./utils/processWeatherData";
+import { processWeatherData } from "./utils/weatherViewModel";
 
 import { renderHeader } from "./components/header";
 import { renderSideBar } from "./components/sidebar";
@@ -16,7 +16,7 @@ import { renderNextDaysForecast } from "./components/nextdaysForecast";
 import mockData from "./utils/mockData/weatherData.json" with { type: "json" };
 
 // Toggle between mock data and real API
-let isMockMode = true;
+let isMockMode = false;
 
 // Initial render (mock mode only)
 if (isMockMode) renderAll(processWeatherData(mockData));
@@ -53,9 +53,9 @@ console.log("Webpack is working");
 
 // Render all UI sections with processed data
 function renderAll(data) {
-  renderHeader(data);
-  renderSideBar(data);
-  renderWeatherHero(data);
-  renderInsights(data);
-  renderNextDaysForecast(data);
+  renderHeader(data.header);
+  renderSideBar(data.sidebar);
+  renderWeatherHero(data.weatherHero);
+  renderInsights(data.insights);
+  renderNextDaysForecast(data.nextFiveDays);
 }
