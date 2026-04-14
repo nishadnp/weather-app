@@ -42,6 +42,7 @@ export function processWeatherData(data) {
       uvIndex: currentConditions.uvindex,
       sunrise: today.sunrise,
       sunset: today.sunset,
+      precipprob: today.precipprob,
     },
     nextFiveDays,
     centered39hWindow,

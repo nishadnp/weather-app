@@ -20,12 +20,10 @@
   font-weight: 600;
   height: 120px;
   padding: 0.5rem;
-  border: 2px solid blue; /* for temporary visualization */
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.5rem;
 }
 
 .highlights-card__icon {
