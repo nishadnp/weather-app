@@ -1,7 +1,4 @@
-// src/index.js
-
 // Entry point
-
 import "./styles/main.css";
 
 import { getWeather } from "./api/weather";
@@ -13,45 +10,78 @@ import { renderWeatherHero } from "./components/weatherHero";
 import { renderInsights } from "./components/insights";
 import { renderNextDaysForecast } from "./components/nextdaysForecast";
 
+import { createDropdown } from "./utils/customDropDown";
+import { setUnitSystem } from "./utils/weatherUnit";
+
 import mockData from "./utils/mockData/weatherData.json" with { type: "json" };
 
 // Toggle between mock data and real API
 let isMockMode = false;
 
-// Initial render (mock mode only)
-if (isMockMode) renderAll(processWeatherData(mockData));
+// ----------------------
+// 🔹 INIT UI BEHAVIOR
+// ----------------------
 
-// Handle location search
-document.querySelector(".header__form").addEventListener("submit", (event) => {
-  event.preventDefault();
+// Initialize dropdowns (explicit, controlled)
+const dropdownElements = document.querySelectorAll(".dropdown");
+const dropdowns = Array.from(dropdownElements).map(createDropdown);
+
+// Global outside click handler (owned by app)
+document.addEventListener("click", () => {
+  dropdowns.forEach((d) => d.close());
+});
+
+// Close dropdowns on form submit
+const form = document.querySelector(".header__form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
   const locationInput = document.getElementById("locationInput");
+  const dropdownEl = document.querySelector(".dropdown");
+
   const locationQuery = locationInput.value;
-  // Fetch and process weather data for the entered location
+  const unitSystem = dropdownEl.dataset.value || "metric"; // fallback
+  setUnitSystem(unitSystem);
+
   if (isMockMode) {
     console.log("Mock mode enabled — ignoring API call");
+    renderAll(processWeatherData(mockData));
     return;
   }
 
-  // Fetch → process → render
-  getWeather(locationQuery)
+  getWeather(locationQuery, unitSystem)
     .then(processWeatherData)
     .then((processedData) => {
       console.log(
-        `Selected weather API data for ${locationQuery}: `,
+        `Weather data for ${locationQuery} (${unitSystem}):`,
         processedData
       );
       renderAll(processedData);
     })
     .catch((error) => {
-      console.error("Weather fetch failed: ", error);
+      console.error("Weather fetch failed:", error);
     });
 
-  locationInput.value = ""; // Clear the input field after submission
+  // UX cleanup
+  locationInput.value = "";
+  dropdowns.forEach((d) => d.close());
 });
 
 console.log("Webpack is working");
 
-// Render all UI sections with processed data
+// ----------------------
+// 🔹 INITIAL RENDER (optional)
+// ----------------------
+
+if (isMockMode) {
+  renderAll(processWeatherData(mockData));
+}
+
+// ----------------------
+// 🔹 RENDER PIPELINE
+// ----------------------
+
 function renderAll(data) {
   renderHeader(data.header);
   renderSideBar(data.sidebar);

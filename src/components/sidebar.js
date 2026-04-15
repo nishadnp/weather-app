@@ -1,5 +1,7 @@
 // src/components/sidebar.js
 
+import { formatUnit } from "../utils/weatherUnit";
+
 export function renderSideBar(processedData) {
   // Keys for the weather parameters to be displayed in the highlight cards
   const keys = ["precipprob", "humidity", "uvIndex", "visibility"];
@@ -9,7 +11,7 @@ export function renderSideBar(processedData) {
     precipprob: "%",
     humidity: "%",
     uvIndex: " UV",
-    visibility: " miles",
+    visibility: formatUnit("distance"),
   };
 
   const highlightCards = document.querySelectorAll(".highlights-card");
@@ -25,6 +27,6 @@ export function renderSideBar(processedData) {
       text.style.fontSize = "1.5rem";
     }
 
-    text.textContent = processedData[keys[index]] + units[keys[index]];
+    text.textContent = processedData[keys[index]] + " " + units[keys[index]];
   });
 }

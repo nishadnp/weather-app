@@ -18,16 +18,46 @@
 
       <!-- Simple form to input location for fetching weather data -->
       <form class="header__form glass-panel">
-        <label for="locationInput" class="visually-hidden"
-          >Enter location:
-        </label>
-        <input
-          type="text"
-          id="locationInput"
-          class="header__input"
-          placeholder="Enter city, address, or coordinates"
-          required
-        />
+        <div class="header__controls">
+          <label for="locationInput" class="visually-hidden"
+            >Enter location:
+          </label>
+          <input
+            type="text"
+            id="locationInput"
+            class="header__input"
+            placeholder="Enter city, address, or coordinates"
+            required
+          />
+
+          <div class="dropdown" id="unitDropdown">
+            <button
+              type="button"
+              class="dropdown-toggle"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              °C, km
+              <span class="dropdown-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#ffffff"
+                >
+                  <path d="M480-360 280-560h400L480-360Z" />
+                </svg>
+              </span>
+            </button>
+
+            <ul class="dropdown-menu glass-panel" role="listbox">
+              <li role="option" data-value="metric">°C, km</li>
+              <li role="option" data-value="us">°F, miles</li>
+              <li role="option" data-value="uk">°C, miles</li>
+            </ul>
+          </div>
+        </div>
         <button class="header__button" type="submit" aria-label="Get weather">
           <svg
             xmlns="http://www.w3.org/2000/svg"

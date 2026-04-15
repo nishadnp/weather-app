@@ -22,6 +22,14 @@
   max-width: 400px;
 }
 
+.header__controls {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+  min-width: 0;
+}
+
 /* Specific hover behavior for the form */
 .header__form:focus-within {
   background: rgba(255, 255, 255, 0.1);
