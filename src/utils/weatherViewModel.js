@@ -6,12 +6,19 @@
  */
 
 import { isSameHour } from "date-fns";
+import { downloadJSON } from "./mockData/getMockData";
 
 // Function to process the weather data received from the API
 export function processWeatherData(data) {
   console.log(data);
   // This function can be expanded to process the weather data as needed
   console.log("Processing weather data...");
+
+  const isCreateMockData = false;
+
+  if (isCreateMockData) {
+    downloadJSON(data);
+  }
 
   const currentConditions = data.currentConditions; // current weather conditions
   const today = data.days[1]; // today’s forecast

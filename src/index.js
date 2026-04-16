@@ -16,7 +16,7 @@ import { setUnitSystem } from "./utils/weatherUnit";
 import mockData from "./utils/mockData/weatherData.json" with { type: "json" };
 
 // Toggle between mock data and real API
-let isMockMode = false;
+let isMockMode = true;
 
 // ----------------------
 // 🔹 INIT UI BEHAVIOR
