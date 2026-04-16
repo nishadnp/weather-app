@@ -17,13 +17,17 @@
 }
 
 .highlights-card {
-  font-weight: 600;
-  height: 120px;
+  min-height: 120px;
+  gap: 0.3rem;
   padding: 0.5rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.highlights-card * {
+  margin: 0;
 }
 
 .highlights-card__icon {
@@ -33,5 +37,17 @@
 }
 
 .highlights-card__title {
+  font-size: 1rem;
+  font-weight: 600;
   display: inline;
+}
+
+.highlights-data {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.highlights-card__footnote {
+  font-size: 0.9rem;
+  font-weight: 400;
 }
