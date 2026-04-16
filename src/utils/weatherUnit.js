@@ -8,7 +8,7 @@ export function setUnitSystem(data) {
 
 const UNIT_MAP = {
   us: {
-    distance: "miles",
+    distance: "mi",
     speed: "mph",
     temperature: "C",
   },
@@ -18,7 +18,7 @@ const UNIT_MAP = {
     temperature: "C",
   },
   uk: {
-    distance: "miles",
+    distance: "mi",
     speed: "mph",
     temperature: "C",
   },

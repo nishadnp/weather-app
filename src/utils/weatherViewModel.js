@@ -38,6 +38,7 @@ export function processWeatherData(data) {
     },
     sidebar: {
       precipprob: currentConditions.precipprob,
+      preciptype: currentConditions.preciptype,
       humidity: currentConditions.humidity,
       uvIndex: currentConditions.uvindex,
       visibility: currentConditions.visibility,
