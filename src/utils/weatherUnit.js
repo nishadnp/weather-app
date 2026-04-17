@@ -1,6 +1,6 @@
 //src/utils/getUnit.js
 
-let unitSystem = "metric"; // default
+export let unitSystem = "metric"; // default
 
 export function setUnitSystem(data) {
   unitSystem = data;

@@ -5,6 +5,12 @@
    ========================= */
 
 /* Insights: secondary weather data (wind + astronomy modules) */
+
+.insights > * {
+  border-radius: 20px;
+  flex: 1;
+}
+
 .insights__wind {
   padding: 0 1rem;
 }
@@ -13,10 +19,6 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
-}
-
-.insights > * {
-  border-radius: 20px;
 }
 
 .insights__stats {
@@ -110,6 +112,10 @@
 .sun__event p,
 .sun__event svg {
   margin: 0;
+}
+
+.sun__event-label {
+  font-weight: 400;
 }
 
 .sun__event-time {
