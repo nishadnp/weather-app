@@ -19,7 +19,8 @@
   border-radius: 25px; /* Component-specific shape */
   padding: 4px 8px 4px 16px;
   width: 100%;
-  max-width: 400px;
+  max-width: 35%;
+  padding: 5px;
 }
 
 .header__controls {
@@ -52,7 +53,6 @@
   font-family: inherit;
   font-size: 0.95rem;
   width: 100%;
-  padding: 8px 0;
 }
 
 /* Placeholder styling */
@@ -67,8 +67,8 @@
   transition: background-color 9999s ease-in-out 0s;
 }
 
-/* The Search Button */
-.header__button {
+/* The Search btn */
+.header__btn {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -80,17 +80,17 @@
   transition: background 0.2s ease;
 }
 
-.header__button:hover {
+.header__btn:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.header__button > svg {
+.header__btn > svg {
   fill: #e3e3e3;
   opacity: 0.8;
   transition: opacity 0.2s ease;
 }
 
-.header__button:hover > svg {
+.header__btn:hover > svg {
   opacity: 1;
 }
 

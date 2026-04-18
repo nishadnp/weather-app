@@ -14,9 +14,10 @@ import { createDropdown } from "./utils/customDropDown";
 import { setUnitSystem } from "./utils/weatherUnit";
 
 import mockData from "./utils/mockData/weatherData.json" with { type: "json" };
+import { getCurrentLocation } from "./api/geolocation";
 
 // Toggle between mock data and real API
-let isMockMode = true;
+let isMockMode = false;
 
 // ----------------------
 // 🔹 INIT UI BEHAVIOR
@@ -31,7 +32,25 @@ document.addEventListener("click", () => {
   dropdowns.forEach((d) => d.close());
 });
 
-// Close dropdowns on form submit
+const currentLocationBtn = document.querySelector(
+  ".header__btn--current-location"
+);
+
+currentLocationBtn.addEventListener("click", () => {
+  const dropdownEl = document.querySelector(".dropdown");
+
+  const unitSystem = dropdownEl.dataset.value || "metric"; // fallback
+  setUnitSystem(unitSystem);
+
+  getCurrentLocation()
+    .then((locationQuery) => {
+      fetchAndRender(locationQuery, unitSystem);
+    })
+    .catch((err) => {
+      console.error("Failed to get location: ", err);
+    });
+});
+
 const form = document.querySelector(".header__form");
 
 form.addEventListener("submit", (e) => {
@@ -50,21 +69,12 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  getWeather(locationQuery, unitSystem)
-    .then(processWeatherData)
-    .then((processedData) => {
-      console.log(
-        `Weather data for ${locationQuery} (${unitSystem}):`,
-        processedData
-      );
-      renderAll(processedData);
-    })
-    .catch((error) => {
-      console.error("Weather fetch failed:", error);
-    });
+  fetchAndRender(locationQuery, unitSystem);
 
   // UX cleanup
   locationInput.value = "";
+
+  // Close dropdowns on form submit
   dropdowns.forEach((d) => d.close());
 });
 
@@ -81,6 +91,21 @@ if (isMockMode) {
 // ----------------------
 // 🔹 RENDER PIPELINE
 // ----------------------
+
+function fetchAndRender(locationQuery, unitSystem) {
+  getWeather(locationQuery, unitSystem)
+    .then(processWeatherData)
+    .then((processedData) => {
+      console.log(
+        `Weather data for ${locationQuery} (${unitSystem}):`,
+        processedData
+      );
+      renderAll(processedData);
+    })
+    .catch((error) => {
+      console.error("Weather fetch failed:", error);
+    });
+}
 
 function renderAll(data) {
   renderHeader(data.header);
