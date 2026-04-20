@@ -62,4 +62,7 @@ main {
 /* Bottom forecast panel */
 .forecast {
   grid-area: forecast;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

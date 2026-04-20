@@ -6,39 +6,91 @@
 
 /* Forecast: multi-day weather cards layout */
 .forecast__list {
-  height: 100%;
   padding: 0;
+  width: 100%;
   margin: 0;
   display: flex;
-  align-items: center;
-  gap: 0.8rem;
+  justify-content: space-between;
+}
+
+.forecast-icon {
+  max-width: 50px;
 }
 
 .forecast__item {
-  flex: 1;
+  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.forecast__card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 10%;
-  min-width: 100%;
-  aspect-ratio: 1 / 1;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+.forecast__item > * {
+  margin: 0;
 }
 
-.forecast__card p {
-  margin: 0;
-  font-weight: 600;
-  font-size: 1.1rem;
+.forecast__temp-max {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.forecast__day-name {
   /* eslint-disable-next-line css/no-invalid-properties */
   font-family: var(--font-jakarta);
-  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  justify-content: center;
+}
+
+.forecast__chart {
+  width: 100%;
+  height: 80px; /* Adjust height to fit between your two forecast lists */
+  display: block;
+  margin: 0.5rem 0;
+  overflow: visible; /* Ensures strokes aren't clipped at the top/bottom */
+}
+
+/* Base properties for all paths */
+.forecast__chart path {
+  vector-effect: non-scaling-stroke;
+  /* Forces the browser to use high-quality geometric anti-aliasing */
+  shape-rendering: geometricPrecision;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The 'Ribbon' Fill - The glassmorphism core */
+.forecast__fill {
+  /* Subtle white tint that interacts with your background */
+  fill: rgba(255, 255, 255, 0.08);
+  stroke: none;
+  pointer-events: none;
+}
+
+.forecast__high-path {
+  stroke: white;
+  stroke-width: 2.5; /* Visual thickness */
+  /* A slight blur on the stroke makes the curve look even smoother */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
+  transition: stroke-width 0.2s ease;
+  cursor: help;
+  pointer-events: stroke;
+}
+
+/* Low Temperature Line - Faded for hierarchy */
+.forecast__low-path {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 2;
+  fill: none;
+  transition: stroke-width 0.2s ease;
+  cursor: help;
+  pointer-events: stroke;
+}
+
+/* Visual feedback when hovering */
+.forecast__high-path:hover {
+  stroke-width: 4; /* Gets thicker to show it's active */
+}
+
+.forecast__low-path:hover {
+  stroke-width: 4;
+  stroke: rgba(255, 255, 255, 0.8);
 }

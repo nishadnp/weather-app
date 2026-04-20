@@ -35,6 +35,7 @@ export function processWeatherData(data) {
       weekday: "long",
     }),
     highestTemperature: day.tempmax,
+    lowestTemperature: day.tempmin,
     icon: day.icon,
   }));
 
