@@ -59,6 +59,7 @@ export function processWeatherData(data) {
       lowestTemperature: today.tempmin,
       highestTemperature: today.tempmax,
       location: data.resolvedAddress,
+      timeZone: data.timezone,
     },
     insights: {
       sunrise: today.sunrise,

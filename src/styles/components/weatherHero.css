@@ -69,6 +69,11 @@
   gap: 0.5rem;
 }
 
+.weather-hero__time {
+  font-family: var(--font-jakarta);
+  font-weight: 600;
+}
+
 .weather-hero__location-icon {
   width: 25px;
   height: 25px;
