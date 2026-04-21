@@ -53,12 +53,18 @@ export function initController(isMockMode) {
   if (isInitialized) return;
   isInitialized = true;
 
+  if (isMockMode) {
+    renderAll(processWeatherData(mockData));
+    console.log("Mock mode enabled — API calls disabled");
+    return;
+  }
+
   // Initialize dropdown instances once
   const dropdowns = Array.from(domElements.dropdowns).map(createDropdown);
 
   bindGlobalEvents(dropdowns);
-  bindFormEvents(dropdowns, isMockMode);
-  bindLocationButton(isMockMode);
+  bindFormEvents(dropdowns);
+  bindLocationButton();
 }
 
 function bindGlobalEvents(dropdowns) {
@@ -68,7 +74,7 @@ function bindGlobalEvents(dropdowns) {
   });
 }
 
-function bindFormEvents(dropdowns, isMockMode) {
+function bindFormEvents(dropdowns) {
   const form = domElements.headerForm;
 
   if (!form) return; // Guard if DOM not present
@@ -85,7 +91,7 @@ function bindFormEvents(dropdowns, isMockMode) {
     const unitSystem = dropdownEl.dataset.value || "metric"; // fallback
     setUnitSystem(unitSystem);
 
-    fetchAndRender(isMockMode, locationQuery, unitSystem);
+    fetchAndRender(locationQuery, unitSystem);
 
     // Reset input and UI state
     locationInput.value = "";
@@ -93,7 +99,7 @@ function bindFormEvents(dropdowns, isMockMode) {
   });
 }
 
-function bindLocationButton(isMockMode) {
+function bindLocationButton() {
   const currentLocationBtn = domElements.currentLocationBtn;
 
   if (!currentLocationBtn) return; // Guard if DOM not present
@@ -106,7 +112,7 @@ function bindLocationButton(isMockMode) {
 
     getCurrentLocation()
       .then((locationQuery) => {
-        fetchAndRender(isMockMode, locationQuery, unitSystem);
+        fetchAndRender(locationQuery, unitSystem);
       })
       .catch((err) => {
         console.error("Failed to get location: ", err);
@@ -114,13 +120,9 @@ function bindLocationButton(isMockMode) {
   });
 }
 
-function fetchAndRender(isMockMode, locationQuery, unitSystem) {
+function fetchAndRender(locationQuery, unitSystem) {
   // Single pipeline: choose data source → process → render
-  if (isMockMode) {
-    renderAll(processWeatherData(mockData));
-    console.log("Mock mode enabled — ignoring API call");
-    return;
-  }
+
   getWeather(locationQuery, unitSystem)
     .then(processWeatherData)
     .then((processedData) => {
