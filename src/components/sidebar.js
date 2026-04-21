@@ -2,6 +2,7 @@
 
 import { formatUnit } from "../utils/weatherUnit";
 import { levelGetters } from "../utils/weatherLevels";
+import { getMapURL } from "../api/map";
 
 export function renderSideBar(processedData) {
   // Keys for the weather parameters to be displayed in the highlight cards
@@ -17,6 +18,7 @@ export function renderSideBar(processedData) {
 
   const highlightCards = document.querySelectorAll(".highlights-card");
 
+  console.log(processedData.coordinates);
   // Loop through the highlight cards and populate them with the corresponding weather data
   highlightCards.forEach((highlightCard, index) => {
     // Clear existing data in the card before adding new data
@@ -39,4 +41,7 @@ export function renderSideBar(processedData) {
       footnote.textContent = getLevel ? getLevel(value, unit) : "";
     }
   });
+
+  const mapImg = document.querySelector(".sidebar__location-map");
+  mapImg.src = getMapURL(processedData.coordinates);
 }

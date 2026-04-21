@@ -27,8 +27,8 @@ body {
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 1rem;
-  border: 2px dotted darkmagenta;
 }
 
 /* Main content layout (hero + insights + forecast sections) */
