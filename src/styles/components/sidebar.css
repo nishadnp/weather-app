@@ -52,8 +52,8 @@
   font-weight: 400;
 }
 
-.sidebar__location-map {
+.static-map__map {
   width: 380px;
   height: 300px;
-  align-self: center;
+  border-radius: 0.5rem;
 }

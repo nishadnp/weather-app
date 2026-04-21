@@ -42,6 +42,6 @@ export function renderSideBar(processedData) {
     }
   });
 
-  const mapImg = document.querySelector(".sidebar__location-map");
+  const mapImg = document.querySelector(".static-map__map");
   mapImg.src = getMapURL(processedData.coordinates);
 }
