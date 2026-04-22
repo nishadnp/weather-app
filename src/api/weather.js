@@ -7,7 +7,7 @@ const API_CONFIG = Object.freeze({
   baseURL:
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline",
   apiKey: "HBDN9AQH5UV6PCLDBRWTDA63D",
-  elements: "",
+  elements: "add:aqius,add:pm2p5,add:o3,add:pm10,add:no2",
 });
 
 // Fetch weather data for a location
@@ -19,8 +19,9 @@ export function getWeather(locationQuery, unitSystem) {
 
   const dateRange = get7DayRangeFromYesterday();
 
-  const url = `${API_CONFIG.baseURL}/${safeLocation}/${dateRange}?unitGroup=${unitSystem}${API_CONFIG.elements}&key=${API_CONFIG.apiKey}&contentType=json`;
-  console.log("Fetching weather data...");
+  const url = `${API_CONFIG.baseURL}/${safeLocation}/${dateRange}?unitGroup=${unitSystem}&elements=${API_CONFIG.elements}&key=${API_CONFIG.apiKey}&contentType=json`;
+
+  console.log("Fetching weather data...", url);
 
   return fetch(url).then((response) => {
     if (!response.ok) {

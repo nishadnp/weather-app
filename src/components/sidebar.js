@@ -1,8 +1,40 @@
 // src/components/sidebar.js
 
 import { formatUnit } from "../utils/weatherUnit";
-import { levelGetters } from "../utils/weatherLevels";
+import { getAQICategory, levelGetters } from "../utils/weatherLevels";
 import { getMapURL } from "../api/map";
+
+const elements = (() => {
+  const cacheEl = {};
+  return {
+    get highlightCards() {
+      return (cacheEl.highlightCards ??=
+        document.querySelectorAll(".highlights-card"));
+    },
+    get aqiValue() {
+      return (cacheEl.aqiValue ??= document.querySelector(
+        ".air-quality__meter-value"
+      ));
+    },
+    get aqiCategory() {
+      return (cacheEl.aqiCategory ??= document.querySelector(
+        ".air-quality__meter-status"
+      ));
+    },
+    get pmPollutant() {
+      return (cacheEl.pmPollutant ??= document.querySelector(
+        ".air-quality__pill-label"
+      ));
+    },
+    get aqiPills() {
+      return (cacheEl.aqiPillsValue ??=
+        document.querySelectorAll(".air-quality__pill"));
+    },
+    get mapImg() {
+      return (cacheEl.mapImg ??= document.querySelector(".static-map__map"));
+    },
+  };
+})();
 
 export function renderSideBar(processedData) {
   // Keys for the weather parameters to be displayed in the highlight cards
@@ -16,9 +48,8 @@ export function renderSideBar(processedData) {
     visibility: formatUnit("distance"),
   };
 
-  const highlightCards = document.querySelectorAll(".highlights-card");
+  const highlightCards = elements.highlightCards;
 
-  console.log(processedData.coordinates);
   // Loop through the highlight cards and populate them with the corresponding weather data
   highlightCards.forEach((highlightCard, index) => {
     // Clear existing data in the card before adding new data
@@ -42,6 +73,37 @@ export function renderSideBar(processedData) {
     }
   });
 
-  const mapImg = document.querySelector(".static-map__map");
+  setAQI(processedData.aqi);
+  setPollutants(processedData.pollutants);
+
+  const mapImg = elements.mapImg;
   mapImg.src = getMapURL(processedData.coordinates);
+}
+
+function setAQI(aqi) {
+  elements.aqiValue.textContent = aqi;
+
+  const aqiCategory = getAQICategory(aqi);
+
+  const aqiCategoryEl = elements.aqiCategory;
+
+  aqiCategoryEl.textContent = aqiCategory.category;
+  aqiCategoryEl.style.color = aqiCategory.categoryColor;
+}
+
+function setPollutants(pollutants) {
+  const aqiPills = elements.aqiPills;
+
+  aqiPills.forEach((pill) => {
+    const pillValueEl = pill.querySelector(".air-quality__pill-value");
+
+    // Get the pollutant key from the element's data attribute
+    const key = pillValueEl.dataset.pollutant;
+
+    // Skip update if no pollutant key is defined
+    if (!key) return;
+
+    // Display pollutant value or fallback if unavailable
+    pillValueEl.textContent = pollutants[key] ?? "N/A";
+  });
 }

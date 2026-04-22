@@ -50,6 +50,13 @@ export function processWeatherData(data) {
       humidity: currentConditions.humidity,
       uvIndex: currentConditions.uvindex,
       visibility: currentConditions.visibility,
+      aqi: currentConditions.aqius,
+      pollutants: {
+        pm2p5: currentConditions.pm2p5,
+        o3: currentConditions.o3,
+        pm10: currentConditions.pm10,
+        no2: currentConditions.no2,
+      },
       coordinates: `${data.longitude},${data.latitude}`,
     },
     weatherHero: {

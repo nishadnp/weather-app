@@ -52,8 +52,115 @@
   font-weight: 400;
 }
 
+.air-quality {
+  /* Use the exact same properties as your other glass-panels */
+  padding: 1.2rem;
+  margin-top: 1rem; /* Space from the highlights above */
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.air-quality__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.air-quality__icon {
+  width: 24px;
+}
+
+.air-quality__title {
+  /* eslint-disable-next-line css/no-invalid-properties */
+  font-family: var(--font-jakarta);
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.air-quality__body {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.air-quality__visual {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.air-quality__meter {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #10b981 0deg 60deg,
+    #facc15 60deg 120deg,
+    #f97316 120deg 180deg,
+    #ef4444 180deg 240deg,
+    #8b5cf6 240deg 300deg,
+    #4c0519 300deg 360deg
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* This creates the "hole" in the donut */
+.air-quality__meter-inner {
+  width: 100px;
+  height: 100px;
+  background: #1e293b; /* Match your body background */
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  /* eslint-disable-next-line css/no-invalid-properties */
+  font-family: var(--font-jakarta);
+  letter-spacing: -0.02em;
+}
+
+.air-quality__meter-value {
+  font-size: 1.8rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.air-quality__meter-status {
+  font-size: 0.8rem;
+  color: #4ade80; /* Match current status color */
+  font-weight: 600;
+}
+
+.air-quality__stats {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+  font-feature-settings:
+    "tnum" on,
+    "lnum" on;
+}
+
+.air-quality__pill {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+}
+
 .static-map__map {
-  width: 380px;
-  height: 300px;
+  min-width: 380px;
+  min-height: 300px;
   border-radius: 0.5rem;
 }

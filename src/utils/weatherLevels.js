@@ -75,3 +75,16 @@ export const levelGetters = {
   uvIndex: uvIndexLevel,
   visibility: visibilityLevel,
 };
+
+export const getAQICategory = (aqi) => {
+  if (!isValidNumber(aqi, 0)) return "";
+
+  if (aqi <= 50) return { category: "Good", categoryColor: "#10b981" };
+  if (aqi <= 100) return { category: "Moderate", categoryColor: "#facc15" };
+  if (aqi <= 150)
+    return { category: "Unhealthy (Sensitive)", categoryColor: "#f97316" };
+  if (aqi <= 200) return { category: "Unhealthy", categoryColor: "#ef4444" };
+  if (aqi <= 300)
+    return { category: "Very Unhealthy", categoryColor: "#8b5cf6" };
+  return { category: "Hazardous", categoryColor: "#4c0519" };
+};
