@@ -5,10 +5,10 @@ import { formatUnit } from "../utils/weatherUnit";
 
 const elements = {
   sunriseTimeText: document.querySelector(
-    ".sun__event--sunrise > .sun__event-time"
+    ".sun__event--sunrise > .sun__event__time"
   ),
   sunsetTimeText: document.querySelector(
-    ".sun__event--sunset > .sun__event-time"
+    ".sun__event--sunset > .sun__event__time"
   ),
   windStats: document.querySelector(".insights__stats"),
 };
@@ -32,9 +32,9 @@ function renderWindStatsForHour(hour) {
   const windDirectionText = document.createElement("p");
   const windGustText = document.createElement("p");
 
-  windSpeedText.innerHTML = `<span class="insights__label">Speed:</span> ${hour.windspeed} <span class="measurement-unit">${formatUnit("speed")}</span>`;
+  windSpeedText.innerHTML = `<span class="insights__label">Speed:</span> ${hour.windspeed} <span class="insights__unit">${formatUnit("speed")}</span>`;
   windDirectionText.innerHTML = `<span class="insights__label">Direction:</span> ${hour.winddir}°`;
-  windGustText.innerHTML = `<span class="insights__label">Gust:</span> ${hour.windgust} <span class="measurement-unit">${formatUnit("speed")}</span>`;
+  windGustText.innerHTML = `<span class="insights__label">Gust:</span> ${hour.windgust} <span class="insights__unit">${formatUnit("speed")}</span>`;
 
   elements.windStats.appendChild(windSpeedText);
   elements.windStats.appendChild(windDirectionText);

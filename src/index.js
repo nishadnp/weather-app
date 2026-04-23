@@ -4,7 +4,7 @@ import "./styles/main.css";
 import { initController } from "./ui/controller";
 
 // Toggle between mock data and real API
-let isMockMode = false;
+let isMockMode = true;
 
 // ----------------------
 // 🔹 INIT APP

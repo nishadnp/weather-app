@@ -6,10 +6,37 @@
 
 /* Header component styles (logo, search form, status display) */
 
+.header {
+  height: fit-content;
+  padding: 0;
+}
+
+.header__branding {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.header__branding-text {
+  max-width: 200px;
+  line-height: 1;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.header__slogan {
+  /* eslint-disable-next-line css/no-invalid-properties */
+  font-family: var(--font-jakarta);
+  font-size: 0.61rem;
+  font-weight: 600;
+}
+
 .header__logo {
-  width: 200px;
-  height: auto;
-  margin-bottom: 10px;
+  width: 75px;
+  height: 75px;
 }
 
 /* Container for the form */
