@@ -45,3 +45,8 @@ select {
   font-family: inherit;
   font-weight: 400;
 }
+
+dt,
+dd {
+  margin: 0;
+}

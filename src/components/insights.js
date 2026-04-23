@@ -3,15 +3,27 @@
 import { renderWindChart } from "../charts/windChart";
 import { formatUnit } from "../utils/weatherUnit";
 
-const elements = {
-  sunriseTimeText: document.querySelector(
-    ".sun__event--sunrise > .sun__event__time"
-  ),
-  sunsetTimeText: document.querySelector(
-    ".sun__event--sunset > .sun__event__time"
-  ),
-  windStats: document.querySelector(".insights__stats"),
-};
+const elements = (() => {
+  const cacheEl = {};
+
+  return {
+    get sunriseTimeText() {
+      return (cacheEl.sunriseTimeText ??= document.querySelector(
+        ".sun__event--sunrise > .sun__event__time"
+      ));
+    },
+    get sunsetTimeText() {
+      return (cacheEl.sunsetTimeText ??= document.querySelector(
+        ".sun__event--sunset > .sun__event__time"
+      ));
+    },
+    get windStatsValue() {
+      return (cacheEl.windStats ??= document.querySelectorAll(
+        ".insights__stats-value"
+      ));
+    },
+  };
+})();
 
 export function renderInsights(processedData) {
   elements.sunriseTimeText.textContent = processedData.sunrise ?? "N/A";
@@ -26,17 +38,14 @@ export function renderInsights(processedData) {
 }
 
 function renderWindStatsForHour(hour) {
-  elements.windStats.innerHTML = "";
+  const values = [hour.windspeed, hour.winddir, hour.windgust];
 
-  const windSpeedText = document.createElement("p");
-  const windDirectionText = document.createElement("p");
-  const windGustText = document.createElement("p");
+  elements.windStatsValue.forEach((value, index) => {
+    // Clear existing values
+    value.innerHTML = "";
 
-  windSpeedText.innerHTML = `<span class="insights__label">Speed:</span> ${hour.windspeed} <span class="insights__unit">${formatUnit("speed")}</span>`;
-  windDirectionText.innerHTML = `<span class="insights__label">Direction:</span> ${hour.winddir}°`;
-  windGustText.innerHTML = `<span class="insights__label">Gust:</span> ${hour.windgust} <span class="insights__unit">${formatUnit("speed")}</span>`;
-
-  elements.windStats.appendChild(windSpeedText);
-  elements.windStats.appendChild(windDirectionText);
-  elements.windStats.appendChild(windGustText);
+    if (values[index] === hour.winddir) value.innerHTML = `${hour.winddir}°`;
+    else
+      value.innerHTML = `${values[index]} <span class="insights__unit">${formatUnit("speed")}</span>`;
+  });
 }
