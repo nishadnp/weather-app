@@ -268,9 +268,9 @@
       </section>
 
       <!-- Insight Cards: Wind Status and Sun Twilight timings -->
-      <section class="insights debug--card">
-        <article class="insights__wind glass-panel">
-          <header class="insights__header">
+      <section class="insight-cards debug--card">
+        <article class="insight glass-panel">
+          <header class="insight__header">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -282,9 +282,9 @@
                 d="M460-160q-50 0-85-35t-35-85h80q0 17 11.5 28.5T460-240q17 0 28.5-11.5T500-280q0-17-11.5-28.5T460-320H80v-80h380q50 0 85 35t35 85q0 50-35 85t-85 35ZM80-560v-80h540q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43h-80q0-59 40.5-99.5T620-840q59 0 99.5 40.5T760-700q0 59-40.5 99.5T620-560H80Zm660 320v-80q26 0 43-17t17-43q0-26-17-43t-43-17H80v-80h660q59 0 99.5 40.5T880-380q0 59-40.5 99.5T740-240Z"
               />
             </svg>
-            <h3 class="insights__title">Wind Status</h3>
+            <h3 class="insight__title">Wind Status</h3>
           </header>
-          <div class="insights__body">
+          <div class="wind">
             <svg
               class="wind-chart"
               viewBox="0 0 192.5 70"
@@ -297,81 +297,81 @@
               />
               <polyline class="wind-chart__trendline" />
             </svg>
-            <dl class="insights__stats">
-              <div class="insights__stats-item">
-                <dt class="insights__stats-label">Speed</dt>
-                <dd class="insights__stats-value">N/A</dd>
+            <dl class="wind__stats">
+              <div class="wind__stats-item">
+                <dt class="wind__stats-label">Speed</dt>
+                <dd class="wind__stats-value">N/A</dd>
               </div>
-              <div class="insights__stats-item">
-                <dt class="insights__stats-label">Direction</dt>
-                <dd class="insights__stats-value">N/A</dd>
+              <div class="wind__stats-item">
+                <dt class="wind__stats-label">Direction</dt>
+                <dd class="wind__stats-value">N/A</dd>
               </div>
-              <div class="insights__stats-item">
-                <dt class="insights__stats-label">Gust</dt>
-                <dd class="insights__stats-value">N/A</dd>
+              <div class="wind__stats-item">
+                <dt class="wind__stats-label">Gust</dt>
+                <dd class="wind__stats-value">N/A</dd>
               </div>
             </dl>
           </div>
         </article>
 
-        <article class="insights__astronomy astronomy--sun glass-panel">
+        <article class="insight glass-panel">
           <!-- Sun module: sunrise/sunset visualization (static now, animated later) -->
-          <div class="sun">
-            <h3 class="sun__title">Sunrise & Sunset</h3>
-            <div class="sun__body">
+
+          <h3 class="insight__title">Sunrise & Sunset</h3>
+          <div class="astronomy">
+            <img
+              src="./assets/images/sun-position-path.svg"
+              alt="Sun Path diagram"
+              class="astronomy__path"
+            />
+
+            <div class="astronomy__events">
+              <div class="astronomy__event astronomy__event--rise">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="23"
+                  height="23"
+                  fill="currentColor"
+                  class="bi bi-sunrise"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M7.646 1.146a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1-.708.708L8.5 2.707V4.5a.5.5 0 0 1-1 0V2.707l-.646.647a.5.5 0 1 1-.708-.708zM2.343 4.343a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707m11.314 0a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0M8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7m3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10m13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"
+                  />
+                </svg>
+                <dl class="astronomy__event-text">
+                  <dt class="astronomy__event-label">Sunrise</dt>
+                  <dd class="astronomy__event-time">--:--</dd>
+                </dl>
+              </div>
+
               <img
-                src="./assets/images/sun-position-path.svg"
-                alt="Sun Path diagram"
-                class="sun__path"
+                src="./assets/images/twilight-line-art.svg"
+                alt="Twilight line-art"
+                class="astronomy__object"
               />
 
-              <div class="sun__events">
-                <div class="sun__event sun__event--sunrise">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="23"
-                    height="23"
-                    fill="currentColor"
-                    class="bi bi-sunrise"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M7.646 1.146a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1-.708.708L8.5 2.707V4.5a.5.5 0 0 1-1 0V2.707l-.646.647a.5.5 0 1 1-.708-.708zM2.343 4.343a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707m11.314 0a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0M8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7m3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10m13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"
-                    />
-                  </svg>
-                  <p class="sun__event__label">Sunrise</p>
-                  <p class="sun__event__time">--:--</p>
-                </div>
-
-                <img
-                  src="./assets/images/twilight-line-art.svg"
-                  alt="Twilight line-art"
-                  class="sun__decoration"
-                />
-
-                <div class="sun__event sun__event--sunset">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="23"
-                    height="23"
-                    fill="currentColor"
-                    class="bi bi-sunset"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7m3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10m13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"
-                    />
-                  </svg>
-                  <p class="sun__event__label">Sunset</p>
-                  <p class="sun__event__time">--:--</p>
-                </div>
+              <div class="astronomy__event astronomy__event--set">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="23"
+                  height="23"
+                  fill="currentColor"
+                  class="bi bi-sunset"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M7.646 4.854a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V1.5a.5.5 0 0 0-1 0v1.793l-.646-.647a.5.5 0 1 0-.708.708zm-5.303-.51a.5.5 0 0 1 .707 0l1.414 1.413a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .706l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM8 7a3 3 0 0 1 2.599 4.5H5.4A3 3 0 0 1 8 7m3.71 4.5a4 4 0 1 0-7.418 0H.499a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10m13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"
+                  />
+                </svg>
+                <dl class="astronomy__event-text">
+                  <dt class="astronomy__event-label">Sunset</dt>
+                  <dd class="astronomy__event-time">--:--</dd>
+                </dl>
               </div>
             </div>
           </div>
           <!-- Moon module (future: moon phase + rise/set toggle target) -->
-          <div class="moon">
-            <!--To be added in future-->
-          </div>
         </article>
       </section>
 

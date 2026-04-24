@@ -9,18 +9,17 @@ const elements = (() => {
   return {
     get sunriseTimeText() {
       return (cacheEl.sunriseTimeText ??= document.querySelector(
-        ".sun__event--sunrise > .sun__event__time"
+        ".astronomy__event--rise .astronomy__event-time"
       ));
     },
     get sunsetTimeText() {
       return (cacheEl.sunsetTimeText ??= document.querySelector(
-        ".sun__event--sunset > .sun__event__time"
+        ".astronomy__event--set .astronomy__event-time"
       ));
     },
     get windStatsValue() {
-      return (cacheEl.windStats ??= document.querySelectorAll(
-        ".insights__stats-value"
-      ));
+      return (cacheEl.windStats ??=
+        document.querySelectorAll(".wind__stats-value"));
     },
   };
 })();
@@ -46,6 +45,6 @@ function renderWindStatsForHour(hour) {
 
     if (values[index] === hour.winddir) value.innerHTML = `${hour.winddir}°`;
     else
-      value.innerHTML = `${values[index]} <span class="insights__unit">${formatUnit("speed")}</span>`;
+      value.innerHTML = `${values[index]} <span class="wind__unit">${formatUnit("speed")}</span>`;
   });
 }

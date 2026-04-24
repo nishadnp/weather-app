@@ -52,11 +52,12 @@ main {
 }
 
 /* Secondary insights panel (wind + astronomy modules) */
-.insights {
+.insight-cards {
   grid-area: extras;
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 1rem;
+  padding: 0 1rem;
 }
 
 /* Bottom forecast panel */

@@ -6,45 +6,26 @@
 
 /* Insights: secondary weather data (wind + astronomy modules) */
 
-.insights > * {
+.insight-cards > * {
   border-radius: 20px;
-  flex: 1;
+  max-height: 265px;
 }
 
-.insights__wind {
-  padding: 0 1rem;
+.insight {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-.insights__header {
+.insight__header {
   display: flex;
   align-items: center;
   gap: 0.3rem;
 }
 
-.insights__stats {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-}
-
-.insights__stats-item {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
-.insights__stats-label {
-  font-size: 0.9rem;
-  font-weight: 300;
-}
-
-.insights__stats-value {
-  font-variant-numeric: tabular-nums;
-}
-
-.insights__unit {
-  font-weight: 600;
-  font-size: 0.85rem;
+.insight__title {
+  margin: 0;
 }
 
 .wind-chart {
@@ -79,57 +60,57 @@
   filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.5));
 }
 
-/* Sun module: sunrise/sunset visualization block */
-.sun {
-  flex: 1;
-  border-radius: 10px;
-  padding: 1rem;
+.wind__stats {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.wind__stats-item {
   display: flex;
   flex-direction: column;
+  align-items: start;
+}
+
+.wind__stats-label {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.wind__stats-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.insights__unit {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.astronomy {
+  display: flex;
+  flex-direction: column;
+}
+
+.astronomy__events {
+  display: flex;
   justify-content: space-between;
 }
 
-.sun__title {
-  margin: 0 0 1rem 0;
-}
-
-.sun__body {
-  display: flex;
-  flex-direction: column;
-}
-
-.sun__events {
-  margin-top: 0px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.sun__event {
+.astronomy__event {
   display: flex;
   flex-direction: column;
   justify-content: end;
 }
 
-.sun__event--sunrise {
+.astronomy__event--rise {
   align-items: start;
+  text-align: left;
 }
 
-.sun__event--sunset {
+.astronomy__event--set {
   align-items: end;
-}
-
-.sun__event p,
-.sun__event svg {
-  margin: 0;
-}
-
-.sun__event__label {
-  font-weight: 400;
-}
-
-.sun__event__time {
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  text-align: right;
 }
 
 .bi {
@@ -137,11 +118,19 @@
   color: #ffffff;
 }
 
-.sun__path {
-  width: 100%;
-  height: auto;
+.astronomy__event-label {
+  font-weight: 400;
 }
 
-.sun__decoration {
-  max-width: 50%;
+.astronomy__event-time {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.astronomy__event-text {
+  margin: 0;
+}
+
+.astronomy__object {
+  max-width: 40%;
 }
