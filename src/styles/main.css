@@ -11,7 +11,11 @@
 @import "./components/insights.css";
 @import "./components/nextdaysForecast.css";
 
-@import "./utilities.css";
+@import "./utilities/debug.css";
+@import "./utilities/glass-panel.css";
+@import "./utilities/accessibility.css";
+@import "./utilities/customDropdown.css";
+@import "./utilities/toggleSwitch.css";
 
 @import "@fontsource/inter/300.css"; /* Light - for 39-hour labels */
 @import "@fontsource/inter/400.css"; /* Regular: Default body, Date, Search */

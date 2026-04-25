@@ -70,9 +70,18 @@ export function processWeatherData(data) {
       timeZone: data.timezone,
     },
     insights: {
-      sunrise: today.sunrise,
-      sunset: today.sunset,
       centered39hWindow,
+      astronomy: {
+        sun: {
+          rise: today.sunrise,
+          set: today.sunset,
+        },
+        moon: {
+          phase: today.moonphase,
+          rise: today.moonrise,
+          set: today.moonset,
+        },
+      },
     },
     nextFiveDays,
   };

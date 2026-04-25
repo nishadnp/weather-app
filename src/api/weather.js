@@ -7,7 +7,8 @@ const API_CONFIG = Object.freeze({
   baseURL:
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline",
   apiKey: "HBDN9AQH5UV6PCLDBRWTDA63D",
-  elements: "add:aqius,add:pm2p5,add:o3,add:pm10,add:no2",
+  elements:
+    "add:aqius,add:pm2p5,add:o3,add:pm10,add:no2,add:moonrise,add:moonset",
 });
 
 // Fetch weather data for a location

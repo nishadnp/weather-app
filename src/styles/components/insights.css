@@ -24,6 +24,10 @@
   gap: 0.3rem;
 }
 
+.insight__header--astronomy {
+  justify-content: space-between;
+}
+
 .insight__title {
   margin: 0;
 }

@@ -270,7 +270,7 @@
       <!-- Insight Cards: Wind Status and Sun Twilight timings -->
       <section class="insight-cards debug--card">
         <article class="insight glass-panel">
-          <header class="insight__header">
+          <header class="insight__header insight__header--wind">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -317,7 +317,15 @@
         <article class="insight glass-panel">
           <!-- Sun module: sunrise/sunset visualization (static now, animated later) -->
 
-          <h3 class="insight__title">Sunrise & Sunset</h3>
+          <header class="insight__header insight__header--astronomy">
+            <h3 class="insight__title insight__title--astronomy">
+              Sunrise & Sunset
+            </h3>
+            <label class="switch" for="toggle-astro">
+              <input type="checkbox" id="toggle-astro" />
+              <span class="slider round"></span>
+            </label>
+          </header>
           <div class="astronomy">
             <img
               src="./assets/images/sun-position-path.svg"
@@ -340,14 +348,14 @@
                   />
                 </svg>
                 <dl class="astronomy__event-text">
-                  <dt class="astronomy__event-label">Sunrise</dt>
+                  <dt class="astronomy__event-label"></dt>
                   <dd class="astronomy__event-time">--:--</dd>
                 </dl>
               </div>
 
               <img
-                src="./assets/images/twilight-line-art.svg"
-                alt="Twilight line-art"
+                src="./assets/images/sun-line-art.svg"
+                alt="Astro Object line-art"
                 class="astronomy__object"
               />
 
@@ -365,13 +373,12 @@
                   />
                 </svg>
                 <dl class="astronomy__event-text">
-                  <dt class="astronomy__event-label">Sunset</dt>
+                  <dt class="astronomy__event-label"></dt>
                   <dd class="astronomy__event-time">--:--</dd>
                 </dl>
               </div>
             </div>
           </div>
-          <!-- Moon module (future: moon phase + rise/set toggle target) -->
         </article>
       </section>
 

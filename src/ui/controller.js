@@ -7,6 +7,8 @@ import { processWeatherData } from "../utils/weatherViewModel";
 import { createDropdown } from "../utils/customDropDown";
 import { setUnitSystem } from "../utils/weatherUnit";
 
+import { initInsights, updateAstro } from "../components/insights";
+
 import mockData from "../utils/mockData/weatherData.json" with { type: "json" };
 
 import {
@@ -19,23 +21,24 @@ import {
 
 const domElements = (() => {
   // Lazy cache for stable DOM nodes (queried once)
-  const cache = {};
+  const cacheEl = {};
   return {
     get dropdown() {
-      return (cache.dropdown ??= document.querySelector(".dropdown"));
+      return (cacheEl.dropdown ??= document.querySelector(".dropdown"));
     },
     get dropdowns() {
       // Static NodeList: safe since DOM is not dynamic
-      return (cache.dropdowns ??= document.querySelectorAll(".dropdown"));
+      return (cacheEl.dropdowns ??= document.querySelectorAll(".dropdown"));
     },
     get headerForm() {
-      return (cache.headerForm ??= document.querySelector(".header__form"));
+      return (cacheEl.headerForm ??= document.querySelector(".header__form"));
     },
     get locationInput() {
-      return (cache.locationInput ??= document.getElementById("locationInput"));
+      return (cacheEl.locationInput ??=
+        document.getElementById("locationInput"));
     },
     get currentLocationBtn() {
-      return (cache.currentLocationBtn ??= document.querySelector(
+      return (cacheEl.currentLocationBtn ??= document.querySelector(
         ".header__btn--current-location"
       ));
     },
@@ -65,6 +68,12 @@ export function initController(isMockMode) {
   bindGlobalEvents(dropdowns);
   bindFormEvents(dropdowns);
   bindLocationButton();
+
+  initInsights((astroMode) => {
+    const astroData = currentProcessedData?.insights.astronomy;
+    if (!astroData) return;
+    updateAstro(astroData, astroMode);
+  });
 }
 
 function bindGlobalEvents(dropdowns) {
@@ -126,11 +135,12 @@ function fetchAndRender(locationQuery, unitSystem) {
   getWeather(locationQuery, unitSystem)
     .then(processWeatherData)
     .then((processedData) => {
+      currentProcessedData = processedData;
       console.log(
         `Weather data for ${locationQuery} (${unitSystem}): `,
-        processedData
+        currentProcessedData
       );
-      renderAll(processedData);
+      renderAll(currentProcessedData);
     })
     .catch((error) => {
       console.error("Weather fetch failed:", error);
@@ -145,3 +155,5 @@ function renderAll(components) {
   renderInsights(components.insights);
   renderNextDaysForecast(components.nextFiveDays);
 }
+
+let currentProcessedData = null;
