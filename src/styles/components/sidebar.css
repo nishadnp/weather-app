@@ -9,6 +9,17 @@
   border-radius: 30px;
 }
 
+.sidebar > * {
+  padding: 0 0.3rem;
+}
+
+.highlights__title,
+.air-quality__title,
+.static-map__title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
 /* highlights grid (component-level layout) */
 .highlights__grid {
   display: grid;
@@ -54,7 +65,6 @@
 
 .air-quality {
   /* Use the exact same properties as your other glass-panels */
-  padding: 1.2rem;
   margin-top: 1rem; /* Space from the highlights above */
   border-radius: 1rem;
   display: flex;
@@ -62,35 +72,18 @@
   justify-content: space-between;
 }
 
-.air-quality__header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .air-quality__icon {
   width: 24px;
 }
 
-.air-quality__title {
-  /* eslint-disable-next-line css/no-invalid-properties */
-  font-family: var(--font-jakarta);
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 0;
-}
-
 .air-quality__body {
   text-align: center;
-  padding: 0.5rem 0;
 }
 
 .air-quality__visual {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin-top: 1rem;
 }
 
 .air-quality__meter {
