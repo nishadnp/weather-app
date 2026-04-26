@@ -51,7 +51,7 @@
   margin: 0;
 }
 
-.weather-hero__temperature-range p {
+.weather-hero__temperature-range dl {
   font-weight: 600;
   margin: 0.3rem;
   display: flex;

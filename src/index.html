@@ -180,40 +180,36 @@
       <section class="air-quality">
         <h3 class="air-quality__title">Air Quality</h3>
         <div class="air-quality__body">
-          <div class="air-quality__visual">
-            <div class="air-quality__meter">
-              <div class="air-quality__meter-inner">
-                <span class="air-quality__meter-index">AQI</span>
-                <h2 class="air-quality__meter-value">__</h2>
-                <span class="air-quality__meter-status">_____</span>
-              </div>
+          <div class="air-quality__meter">
+            <div class="air-quality__meter-inner">
+              <span class="air-quality__meter-index">AQI</span>
+              <h2 class="air-quality__meter-value">__</h2>
+              <span class="air-quality__meter-status">_____</span>
             </div>
-            <div class="air-quality__stats">
-              <div class="air-quality__pill">
-                <span class="air-quality__pill-label"> PM<sub>2.5</sub> </span>
-                <span class="air-quality__pill-value" data-pollutant="pm2p5"
-                  >-----</span
-                >
-              </div>
-              <div class="air-quality__pill">
-                <span class="air-quality__pill-label"> O<sub>3</sub> </span>
-                <span class="air-quality__pill-value" data-pollutant="o3"
-                  >-----</span
-                >
-              </div>
-              <div class="air-quality__pill">
-                <span class="air-quality__pill-label"> PM<sub>10</sub> </span>
-                <span class="air-quality__pill-value" data-pollutant="pm10"
-                  >-----</span
-                >
-              </div>
-              <div class="air-quality__pill">
-                <span class="air-quality__pill-label"> NO<sub>2</sub> </span>
-                <span class="air-quality__pill-value" data-pollutant="no2"
-                  >-----</span
-                >
-              </div>
-            </div>
+          </div>
+          <div class="air-quality__stats">
+            <dl class="air-quality__pill">
+              <dt class="air-quality__pill-label">PM<sub>2.5</sub></dt>
+              <dd class="air-quality__pill-value" data-pollutant="pm2p5">
+                -----
+              </dd>
+            </dl>
+            <dl class="air-quality__pill">
+              <dt class="air-quality__pill-label">O<sub>3</sub></dt>
+              <dd class="air-quality__pill-value" data-pollutant="o3">-----</dd>
+            </dl>
+            <dl class="air-quality__pill">
+              <dt class="air-quality__pill-label">PM<sub>10</sub></dt>
+              <dd class="air-quality__pill-value" data-pollutant="pm10">
+                -----
+              </dd>
+            </dl>
+            <dl class="air-quality__pill">
+              <dt class="air-quality__pill-label">NO<sub>2</sub></dt>
+              <dd class="air-quality__pill-value" data-pollutant="no2">
+                -----
+              </dd>
+            </dl>
           </div>
         </div>
       </section>
@@ -247,14 +243,14 @@
           <p class="weather-hero__temperature-current">_____</p>
 
           <div class="weather-hero__temperature-range">
-            <p class="glass-panel">
-              <span>H</span>
-              <span class="weather-hero__temperature-high">-------</span>
-            </p>
-            <p class="glass-panel">
-              <span>L</span>
-              <span class="weather-hero__temperature-low">-------</span>
-            </p>
+            <dl class="glass-panel">
+              <dt>H</dt>
+              <dd class="weather-hero__temperature-high">-------</dd>
+            </dl>
+            <dl class="glass-panel">
+              <dt>L</dt>
+              <dd class="weather-hero__temperature-low">-------</dd>
+            </dl>
           </div>
         </div>
         <div class="weather-hero__location">
