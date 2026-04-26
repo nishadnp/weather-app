@@ -1,5 +1,7 @@
 // src/components/weatherHero.js
 
+import { formatTimeZone, getTimeWithoutSeconds } from "../utils/time-fns";
+
 const elements = {
   weatherIcon: document.querySelector(".weather-hero__icon"),
   weatherCondition: document.querySelector(".weather-hero__condition"),
@@ -36,7 +38,10 @@ export function renderWeatherHero(processedData) {
 
   elements.currentLocation.textContent = processedData.location ?? "N/A";
 
-  elements.currentTime.textContent = getTimeDetails(processedData.timeZone);
+  elements.currentTime.textContent =
+    getTimeWithoutSeconds(processedData.timezone) +
+    " • " +
+    formatTimeZone(processedData.timezone);
 }
 
 function setWeatherIcon(iconName) {
@@ -53,22 +58,4 @@ function setWeatherIcon(iconName) {
       console.error("Error loading weather icon:", error);
       elements.weatherIcon.src = "https://via.placeholder.com/150"; // fallback icon
     });
-}
-
-function getTimeDetails(timeZone) {
-  const time = new Date().toLocaleTimeString("en-GB", {
-    timeZone,
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
-
-  const gmt = new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    timeZoneName: "shortOffset",
-  })
-    .formatToParts(new Date())
-    .find((p) => p.type === "timeZoneName")?.value;
-
-  return `${time} • ${gmt}`;
 }
