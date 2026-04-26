@@ -9,8 +9,6 @@ import { setUnitSystem } from "../utils/weatherUnit";
 
 import { initInsights, updateAstro } from "../components/insights";
 
-import mockData from "../utils/mockData/weatherData.json" with { type: "json" };
-
 import {
   renderHeader,
   renderSideBar,
@@ -51,16 +49,10 @@ const domElements = (() => {
 
 let isInitialized = false;
 
-export function initController(isMockMode) {
+export function initController() {
   // Prevent duplicate event bindings
   if (isInitialized) return;
   isInitialized = true;
-
-  if (isMockMode) {
-    renderAll(processWeatherData(mockData));
-    console.log("Mock mode enabled — API calls disabled");
-    return;
-  }
 
   // Initialize dropdown instances once
   const dropdowns = Array.from(domElements.dropdowns).map(createDropdown);

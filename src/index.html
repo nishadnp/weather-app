@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
   </head>
-  <body class="debug--layout">
+  <body>
     <!-- App header: logo + city search + date display -->
     <header class="header">
       <div class="header__branding">
@@ -122,10 +122,10 @@
     </header>
 
     <!-- Sidebar: weather highlights (wind, humidity, UV, visibility) -->
-    <aside class="sidebar glass-panel debug--component">
+    <aside class="sidebar glass-panel">
       <section class="highlights">
         <h3 class="highlights__title">Today Highlights</h3>
-        <div class="highlights__grid debug--card">
+        <div class="highlights__grid">
           <article class="highlights-card glass-panel">
             <div class="highlights-card__header">
               <img
@@ -227,9 +227,9 @@
       </section>
     </aside>
 
-    <main class="debug--component">
+    <main>
       <!-- Main weather display: current conditions + temperature + location -->
-      <section class="weather-hero debug--element">
+      <section class="weather-hero">
         <div class="weather-hero__info">
           <div class="weather-hero__header">
             <img
@@ -269,7 +269,7 @@
       </section>
 
       <!-- Insight Cards: Wind Status and Sun Twilight timings -->
-      <section class="insight-cards debug--card">
+      <section class="insight-cards">
         <article class="insight glass-panel">
           <header class="insight__header insight__header--wind">
             <svg
