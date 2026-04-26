@@ -69,7 +69,6 @@
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .air-quality__icon {
@@ -78,9 +77,6 @@
 
 .air-quality__body {
   text-align: center;
-}
-
-.air-quality__visual {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -144,12 +140,21 @@
 
 .air-quality__pill {
   background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem;
+  padding: 0.5rem 0.3rem;
   border-radius: 0.75rem;
   display: flex;
   justify-content: space-between;
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.85rem;
+}
+
+.air-quality__pill-value {
+  font-weight: 500;
+}
+
+.air-quality__unit {
+  font-size: 0.7rem;
+  font-style: italic;
 }
 
 .static-map__map {

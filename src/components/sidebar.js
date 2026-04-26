@@ -3,6 +3,7 @@
 import { formatUnit } from "../utils/weatherUnit";
 import { getAQICategory, levelGetters } from "../utils/weatherLevels";
 import { getMapURL } from "../api/map";
+import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
 
 const elements = (() => {
   const cacheEl = {};
@@ -66,7 +67,8 @@ export function renderSideBar(processedData) {
     // Secondary label (contextual interpretation of the value)
     const footnote = highlightCard.querySelector(".highlights-card__footnote");
     if (key === "precipprob") {
-      footnote.textContent = processedData.preciptype || "";
+      footnote.textContent =
+        capitalizeFirstLetter(processedData.preciptype) || "";
     } else {
       const getLevel = levelGetters[key];
       footnote.textContent = getLevel ? getLevel(value, unit) : "";
@@ -97,6 +99,9 @@ function setPollutants(pollutants) {
   aqiPills.forEach((pill) => {
     const pillValueEl = pill.querySelector(".air-quality__pill-value");
 
+    const pollutantUnit = document.createElement("span");
+    pollutantUnit.classList.add("air-quality__unit");
+
     // Get the pollutant key from the element's data attribute
     const key = pillValueEl.dataset.pollutant;
 
@@ -105,5 +110,9 @@ function setPollutants(pollutants) {
 
     // Display pollutant value or fallback if unavailable
     pillValueEl.textContent = pollutants[key] ?? "N/A";
+
+    pollutantUnit.innerHTML =
+      key.slice(0, 2) === "pm" ? " µg/m<sup>3</sup>" : " ppb";
+    pillValueEl.appendChild(pollutantUnit);
   });
 }
