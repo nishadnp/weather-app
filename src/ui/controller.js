@@ -2,6 +2,7 @@
 
 import { getWeather } from "../api/weather";
 import { getCurrentLocation } from "../api/geolocation";
+import { getBackgroundImage } from "../api/dynamicBackground";
 
 import { processWeatherData } from "../utils/weatherViewModel";
 import { createDropdown } from "../utils/customDropDown";
@@ -132,6 +133,7 @@ function fetchAndRender(locationQuery, unitSystem) {
         `Weather data for ${locationQuery} (${unitSystem}): `,
         currentProcessedData
       );
+      updateBackgroundImage(currentProcessedData.conditions);
       renderAll(currentProcessedData);
     })
     .catch((error) => {
@@ -146,6 +148,17 @@ function renderAll(components) {
   renderWeatherHero(components.weatherHero);
   renderInsights(components.insights);
   renderNextDaysForecast(components.nextFiveDays);
+}
+
+async function updateBackgroundImage(weatherCondition) {
+  const image = await getBackgroundImage(weatherCondition);
+  const body = document.querySelector("body");
+
+  if (image) {
+    body.style.background = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${image}')`;
+    body.style.backgroundSize = "cover";
+    body.style.backgroundPosition = "center";
+  }
 }
 
 let currentProcessedData = null;

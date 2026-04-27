@@ -34,6 +34,7 @@ export function processWeatherData(data) {
 
   // UI view model structured by component sections
   return {
+    conditions: currentConditions.conditions,
     header: {
       date: today.datetime,
     },

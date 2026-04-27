@@ -29,6 +29,8 @@ body {
   font-family: var(--font-inter);
   font-weight: 400;
   line-height: 1.5;
+  height: 100vh;
+  height: 100dvh;
 }
 
 h1,
