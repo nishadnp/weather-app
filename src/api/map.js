@@ -3,7 +3,7 @@
 // API config (constants only), freeze prevents accidental changes to config values at runtime
 const API_CONFIG = Object.freeze({
   baseURL: "https://maps.geoapify.com/v1/staticmap",
-  apiKey: "c82290da2def4043a4636d517e53223e",
+  apiKey: process.env.GEOAPIFY_KEY,
   styleName: "dark-matter",
   width: 380,
   height: 300,

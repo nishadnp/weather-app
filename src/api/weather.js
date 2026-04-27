@@ -6,7 +6,7 @@ import { format, subDays, addDays } from "date-fns";
 const API_CONFIG = Object.freeze({
   baseURL:
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline",
-  apiKey: "HBDN9AQH5UV6PCLDBRWTDA63D",
+  apiKey: process.env.WEATHER_API_KEY,
   elements:
     "add:aqius,add:pm2p5,add:o3,add:pm10,add:no2,add:moonrise,add:moonset",
 });
