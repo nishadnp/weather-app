@@ -17,11 +17,10 @@ export async function getBackgroundImage(weatherCondition) {
 
     const data = await response.json();
 
-    console.log("Unsplash data: ", data);
     // Return the regular-sized image URL
     return data.results[0]?.urls?.regular;
   } catch (error) {
-    console.log("Background Error: ", error);
+    console.error(error);
     return null;
   }
 }

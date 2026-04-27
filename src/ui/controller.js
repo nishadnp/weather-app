@@ -129,10 +129,6 @@ function fetchAndRender(locationQuery, unitSystem) {
     .then(processWeatherData)
     .then((processedData) => {
       currentProcessedData = processedData;
-      console.log(
-        `Weather data for ${locationQuery} (${unitSystem}): `,
-        currentProcessedData
-      );
       updateBackgroundImage(currentProcessedData.conditions);
       renderAll(currentProcessedData);
     })

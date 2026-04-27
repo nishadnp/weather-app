@@ -22,8 +22,6 @@ export function getWeather(locationQuery, unitSystem) {
 
   const url = `${API_CONFIG.baseURL}/${safeLocation}/${dateRange}?unitGroup=${unitSystem}&elements=${API_CONFIG.elements}&key=${API_CONFIG.apiKey}&contentType=json`;
 
-  console.log("Fetching weather data...", url);
-
   return fetch(url).then((response) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
