@@ -320,15 +320,44 @@
             </h3>
             <label class="switch" for="toggle-astro">
               <input type="checkbox" id="toggle-astro" />
-              <span class="slider round"></span>
+              <span class="slider"></span>
             </label>
           </header>
           <div class="astronomy">
-            <img
-              src="./assets/images/sun-position-path.svg"
-              alt="Sun Path diagram"
-              class="astronomy__path"
-            />
+            <svg
+              class="astronomy-chart"
+              viewBox="122 140 259 75"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <!-- The Track Gradient -->
+                <linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#fff" stop-opacity=".2" />
+                  <stop offset="5%" stop-color="#fff" />
+                  <stop offset="95%" stop-color="#fff" />
+                  <stop offset="100%" stop-color="#fff" stop-opacity=".2" />
+                </linearGradient>
+
+                <!-- The Sun Gradient -->
+                <radialGradient
+                  id="sunGradient"
+                  cx="50%"
+                  cy="50%"
+                  r="50%"
+                  fx="50%"
+                  fy="50%"
+                >
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="30%" stop-color="#fff200" />
+                  <stop offset="100%" stop-color="#f1c40f" />
+                </radialGradient>
+              </defs>
+              <path
+                class="astronomy-chart__track"
+                d="M120 220a145 130 0 0 1 260 0"
+              />
+              <circle class="astronomy-chart__object" />
+            </svg>
 
             <div class="astronomy__events">
               <div class="astronomy__event astronomy__event--rise">

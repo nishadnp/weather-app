@@ -57,7 +57,7 @@ export function processWeatherData(data) {
       lowestTemperature: today.tempmin,
       highestTemperature: today.tempmax,
       location: data.resolvedAddress,
-      timeZone: data.timezone,
+      timezone: data.timezone,
     },
     insights: {
       centered39hWindow,
@@ -66,6 +66,7 @@ export function processWeatherData(data) {
           rise: today.sunrise,
           set: today.sunset,
         },
+        timezone: data.timezone,
         moon: {
           phase: today.moonphase,
           rise: today.moonrise,

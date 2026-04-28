@@ -24,12 +24,13 @@
   gap: 0.3rem;
 }
 
-.insight__header--astronomy {
-  justify-content: space-between;
-}
-
 .insight__title {
   margin: 0;
+}
+
+.insights__unit {
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .wind-chart {
@@ -86,14 +87,43 @@
   font-variant-numeric: tabular-nums;
 }
 
-.insights__unit {
-  font-weight: 600;
-  font-size: 0.85rem;
+.insight__header--astronomy {
+  justify-content: space-between;
 }
 
 .astronomy {
   display: flex;
   flex-direction: column;
+}
+
+.astronomy-chart__track {
+  fill: none;
+  stroke: url(#a);
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-dasharray: 4 8;
+}
+
+#astronomy-chart__object {
+  transition:
+    cx 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    cy 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sun Mode Styling */
+.astronomy-chart__object--sun {
+  r: 9px;
+  fill: url(#sunGradient); /* References the defs ID */
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 10px rgba(243, 156, 18, 0.6));
+}
+
+/* Moon Mode Styling */
+.astronomy-chart__object--moon {
+  r: 6px;
+  fill: #d1d5db; /* A pale, lunar cream */
+  filter: drop-shadow(0 0 5px rgba(245, 243, 206, 0.6));
+  stroke: #d1d5db;
 }
 
 .astronomy__events {

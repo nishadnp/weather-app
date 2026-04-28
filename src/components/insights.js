@@ -6,6 +6,7 @@ import { formatUnit } from "../utils/weatherUnit";
 
 import sunLineArtPath from "../assets/images/sun-line-art.svg";
 import moonLineArtPath from "../assets/images/moon-line-art.svg";
+import { updateAstroObjectPosition } from "../charts/astroObjectPosition";
 
 const elements = (() => {
   const cacheEl = {};
@@ -51,7 +52,8 @@ export function renderInsights(processedData) {
   renderWindChart(processedData.centered39hWindow);
   renderWindStatsForHour(processedData.centered39hWindow[currentHour]);
 
-  updateAstro(processedData.astronomy, getAstroMode());
+  const astroMode = getAstroMode();
+  updateAstro(processedData.astronomy, astroMode);
 }
 
 function renderWindStatsForHour(hour) {
@@ -68,6 +70,8 @@ function renderWindStatsForHour(hour) {
 }
 
 export function updateAstro(astroData, astroObject = "sun") {
+  const timeZone = astroData.timezone;
+
   astroData = astroData[astroObject];
 
   const capitalizedAstroObject = capitalizeFirstLetter(astroObject);
@@ -75,6 +79,8 @@ export function updateAstro(astroData, astroObject = "sun") {
   const astroTitle = elements.astroTitle;
   astroTitle.textContent =
     capitalizedAstroObject + "rise" + " & " + capitalizedAstroObject + "set";
+
+  updateAstroObjectPosition(astroData, astroObject, timeZone);
 
   const astroObjectLineArt = elements.astroObjectImg;
   astroObjectLineArt.src =
