@@ -148,13 +148,13 @@ function renderAll(components) {
 }
 
 async function updateBackgroundImage(weatherCondition) {
-  const timeVibe = getTimeVibe(
+  currentTimeVibe = getTimeVibe(
     currentProcessedData.timezone,
     currentProcessedData.insights.astronomy.sun.rise,
     currentProcessedData.insights.astronomy.sun.set
   );
 
-  const image = await getBackgroundImage(weatherCondition, timeVibe);
+  const image = await getBackgroundImage(weatherCondition, currentTimeVibe);
   const body = document.querySelector("body");
 
   if (image) {
@@ -165,3 +165,4 @@ async function updateBackgroundImage(weatherCondition) {
 }
 
 let currentProcessedData = null;
+export let currentTimeVibe = null;
