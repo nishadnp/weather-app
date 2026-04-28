@@ -2,12 +2,14 @@
 
 import { getTimeWithSeconds } from "../../utils/time-fns";
 import { computePosition } from "./computePosition";
-import { renderObject } from "./renderAstroObject";
+import { renderMoonShroud, renderObject } from "./renderAstroObject";
 
 export function updateAstroObjectPosition(dataset, celestialObject, timezone) {
   const currentTime = getTimeWithSeconds(timezone);
 
-  const objectCoordinates = computePosition(dataset, currentTime);
+  const objectData = computePosition(dataset, currentTime, celestialObject);
 
-  renderObject(objectCoordinates, celestialObject, objectCoordinates.onShift);
+  renderObject(objectData.coordinates, celestialObject, objectData.onShift);
+
+  renderMoonShroud(objectData.coordinates, objectData.offset);
 }

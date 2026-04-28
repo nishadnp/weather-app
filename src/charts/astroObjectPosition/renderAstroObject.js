@@ -24,3 +24,18 @@ export function renderObject(coordinates, celestialObject, onShift) {
   svgShape.setAttribute("cx", coordinates.cx);
   svgShape.setAttribute("cy", coordinates.cy);
 }
+
+export function renderMoonShroud(coordinates, offset) {
+  const shroud = document.querySelector(".moon-shroud");
+
+  // If phaseValue is null, it means it's not a moon or we don't have data, so hide the shroud
+  if (offset === null) {
+    shroud.style.display = "none";
+    return;
+  }
+
+  shroud.style.display = "block"; // Reset visibility for Moon Mode
+
+  shroud.setAttribute("cx", coordinates.cx + offset);
+  shroud.setAttribute("cy", coordinates.cy);
+}

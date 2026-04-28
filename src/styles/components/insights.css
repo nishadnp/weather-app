@@ -126,6 +126,13 @@
   stroke: #d1d5db;
 }
 
+.moon-shroud {
+  fill: #111827;
+  opacity: 0.8;
+  pointer-events: none;
+  r: 6px;
+}
+
 .astronomy__events {
   display: flex;
   justify-content: space-between;
