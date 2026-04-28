@@ -4,7 +4,7 @@ import { getWeather } from "../api/weather";
 import { getCurrentLocation } from "../api/geolocation";
 import { getBackgroundImage } from "../api/dynamicBackground";
 
-import { processWeatherData } from "../utils/weatherViewModel";
+import { processWeatherData } from "../models/weatherViewModel";
 import { createDropdown } from "../utils/customDropDown";
 import { setUnitSystem } from "../utils/weatherUnit";
 
