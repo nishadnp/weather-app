@@ -17,6 +17,7 @@ import {
   renderInsights,
   renderNextDaysForecast,
 } from "../components";
+import { getTimeVibe } from "../utils/time-fns";
 
 const domElements = (() => {
   // Lazy cache for stable DOM nodes (queried once)
@@ -147,7 +148,13 @@ function renderAll(components) {
 }
 
 async function updateBackgroundImage(weatherCondition) {
-  const image = await getBackgroundImage(weatherCondition);
+  const timeVibe = getTimeVibe(
+    currentProcessedData.timezone,
+    currentProcessedData.insights.astronomy.sun.rise,
+    currentProcessedData.insights.astronomy.sun.set
+  );
+
+  const image = await getBackgroundImage(weatherCondition, timeVibe);
   const body = document.querySelector("body");
 
   if (image) {

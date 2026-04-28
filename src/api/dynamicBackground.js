@@ -5,8 +5,8 @@ const API_CONFIG = Object.freeze({
   apiKey: process.env.UNSPLASH_KEY,
 });
 
-export async function getBackgroundImage(weatherCondition) {
-  const query = `${weatherCondition} weather landscape`;
+export async function getBackgroundImage(weatherCondition, timeVibe) {
+  const query = `${weatherCondition} weather ${timeVibe} landscape`;
 
   const URL = `${API_CONFIG.baseURL}?query=${query}&orientation=landscape&per_page=1&client_id=${API_CONFIG.apiKey}`;
 
