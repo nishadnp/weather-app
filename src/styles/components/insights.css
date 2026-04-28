@@ -1,10 +1,4 @@
-/* src/styles/components/insights.css */
-
-/* =========================
-   INSIGHTS
-   ========================= */
-
-/* Insights: secondary weather data (wind + astronomy modules) */
+/* Insights: wind status and astronomy (sun/moon) charts */
 
 .insight-cards > * {
   border-radius: 20px;

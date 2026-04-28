@@ -2,6 +2,7 @@
 
 import { formatTimeZone, getTimeWithoutSeconds } from "../utils/time-fns";
 
+// DOM element cache for the hero section
 const elements = {
   weatherIcon: document.querySelector(".weather-hero__icon"),
   weatherCondition: document.querySelector(".weather-hero__condition"),
@@ -15,6 +16,11 @@ const elements = {
   currentTime: document.querySelector(".weather-hero__time"),
 };
 
+/**
+ * Renders the main weather hero section with current conditions, temperature, location, and time.
+ * Dynamically loads weather icon from SVG asset files.
+ * @param {Object} processedData - Processed weather data for display
+ */
 export function renderWeatherHero(processedData) {
   setWeatherIcon(processedData.icon);
 
@@ -44,6 +50,11 @@ export function renderWeatherHero(processedData) {
     formatTimeZone(processedData.timezone);
 }
 
+/**
+ * Dynamically loads and sets the weather condition icon as SVG.
+ * Uses import() for on-demand asset loading. Falls back to placeholder on error.
+ * @param {string} iconName - Icon identifier from Visual Crossing API (e.g., 'cloudy', 'rainy')
+ */
 function setWeatherIcon(iconName) {
   if (!iconName) {
     elements.weatherIcon.src = "https://via.placeholder.com/150";
@@ -56,6 +67,6 @@ function setWeatherIcon(iconName) {
     })
     .catch((error) => {
       console.error("Error loading weather icon:", error);
-      elements.weatherIcon.src = "https://via.placeholder.com/150"; // fallback icon
+      elements.weatherIcon.src = "https://via.placeholder.com/150";
     });
 }

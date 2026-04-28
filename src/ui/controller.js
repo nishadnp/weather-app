@@ -45,18 +45,17 @@ const domElements = (() => {
   };
 })();
 
-// ----------------------
-// 🔹 INIT UI BEHAVIOR
-// ----------------------
-
 let isInitialized = false;
 
+/**
+ * Initializes the application controller by setting up event handlers and UI state.
+ * Called once on app startup to bind form submissions, location button, and astronomy toggles.
+ * Prevents duplicate initialization via isInitialized guard.
+ */
 export function initController() {
-  // Prevent duplicate event bindings
   if (isInitialized) return;
   isInitialized = true;
 
-  // Initialize dropdown instances once
   const dropdowns = Array.from(domElements.dropdowns).map(createDropdown);
 
   bindGlobalEvents(dropdowns);
@@ -70,17 +69,25 @@ export function initController() {
   });
 }
 
+/**
+ * Attaches global click handler to close all dropdowns when clicking outside.
+ * @param {Array} dropdowns - Array of dropdown instances to manage
+ */
 function bindGlobalEvents(dropdowns) {
-  // Close all dropdowns on outside click
   document.addEventListener("click", () => {
     dropdowns.forEach((d) => d.close());
   });
 }
 
+/**
+ * Binds form submission handler for location search with unit system selection.
+ * Validates input, fetches weather data, renders UI, then clears form state.
+ * @param {Array} dropdowns - Array of dropdown instances to close after submit
+ */
 function bindFormEvents(dropdowns) {
   const form = domElements.headerForm;
 
-  if (!form) return; // Guard if DOM not present
+  if (!form) return;
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -89,28 +96,30 @@ function bindFormEvents(dropdowns) {
     const dropdownEl = domElements.dropdown;
 
     const locationQuery = locationInput.value;
-    if (!locationQuery.trim()) return; // Ignore empty input
+    if (!locationQuery.trim()) return;
 
-    const unitSystem = dropdownEl.dataset.value || "metric"; // fallback
+    const unitSystem = dropdownEl.dataset.value || "metric";
     setUnitSystem(unitSystem);
 
     fetchAndRender(locationQuery, unitSystem);
 
-    // Reset input and UI state
     locationInput.value = "";
     dropdowns.forEach((d) => d.close());
   });
 }
 
+/**
+ * Binds click handler for current location button.
+ * Requests user's geolocation via browser API, then fetches and renders weather.
+ */
 function bindLocationButton() {
   const currentLocationBtn = domElements.currentLocationBtn;
 
-  if (!currentLocationBtn) return; // Guard if DOM not present
+  if (!currentLocationBtn) return;
 
   currentLocationBtn.addEventListener("click", () => {
     const dropdownEl = domElements.dropdown;
-
-    const unitSystem = dropdownEl.dataset.value || "metric"; // fallback
+    const unitSystem = dropdownEl.dataset.value || "metric";
     setUnitSystem(unitSystem);
 
     getCurrentLocation()
@@ -123,9 +132,13 @@ function bindLocationButton() {
   });
 }
 
+/**
+ * Orchestrates weather data fetching, processing, and UI rendering.
+ * Fetches raw API data → transforms to UI model → updates background → renders all components.
+ * @param {string} locationQuery - Location name or coordinates for weather API
+ * @param {string} unitSystem - Unit system ('metric', 'us', 'uk') for temperature/speed
+ */
 function fetchAndRender(locationQuery, unitSystem) {
-  // Single pipeline: choose data source → process → render
-
   getWeather(locationQuery, unitSystem)
     .then(processWeatherData)
     .then((processedData) => {
@@ -138,8 +151,12 @@ function fetchAndRender(locationQuery, unitSystem) {
     });
 }
 
+/**
+ * Renders all UI sections with processed weather data.
+ * Each render function handles DOM updates for its respective component.
+ * @param {Object} components - Processed weather data grouped by component (header, sidebar, etc.)
+ */
 function renderAll(components) {
-  // Delegate rendering to individual UI modules
   renderHeader(components.header);
   renderSideBar(components.sidebar);
   renderWeatherHero(components.weatherHero);
@@ -147,6 +164,12 @@ function renderAll(components) {
   renderNextDaysForecast(components.nextFiveDays);
 }
 
+/**
+ * Updates page background with weather-based image from Unsplash API.
+ * Determines time-of-day vibe (sunrise, afternoon, sunset, etc.) to select appropriate imagery.
+ * Applies dark overlay gradient for text readability.
+ * @param {string} weatherCondition - Weather condition (e.g., 'Rainy', 'Sunny') for image search
+ */
 async function updateBackgroundImage(weatherCondition) {
   currentTimeVibe = getTimeVibe(
     currentProcessedData.timezone,

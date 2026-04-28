@@ -1,11 +1,24 @@
 // src/utils/weatherLevels.js
 
-// Validates numeric input with optional bounds
+/**
+ * Validates that a value is a finite number within optional bounds.
+ * @param {*} x - Value to validate
+ * @param {number} min - Minimum acceptable value (default: -Infinity)
+ * @param {number} max - Maximum acceptable value (default: Infinity)
+ * @returns {boolean} True if x is a valid finite number within bounds
+ */
 function isValidNumber(x, min = -Infinity, max = Infinity) {
   return typeof x === "number" && Number.isFinite(x) && x >= min && x <= max;
 }
 
-// Maps numeric value to a labeled range
+/**
+ * Maps a numeric value to a labeled category using threshold-based rules.
+ * Uses <= comparison: first threshold that value satisfies wins.
+ * @param {number} value - Value to categorize
+ * @param {Array} rules - Array of [threshold, label] pairs, sorted ascending
+ * @param {string} invalidReturn - Label to return if value is invalid
+ * @returns {string} Corresponding label or invalidReturn if invalid
+ */
 function pickLevel(value, rules, invalidReturn = "") {
   if (!isValidNumber(value)) return invalidReturn;
 
@@ -16,7 +29,11 @@ function pickLevel(value, rules, invalidReturn = "") {
   return invalidReturn;
 }
 
-// Humidity → qualitative air moisture level
+/**
+ * Categorizes relative humidity as qualitative moisture level.
+ * @param {number} relativeHumidity - Humidity percentage (0-100)
+ * @returns {string} Humidity category: 'Very Dry', 'Dry Air', 'Moderate', 'Humid', or 'Very Humid'
+ */
 const humidityLevel = (relativeHumidity) => {
   if (!isValidNumber(relativeHumidity, 0, 100)) return "";
 
@@ -29,7 +46,11 @@ const humidityLevel = (relativeHumidity) => {
   ]);
 };
 
-// UV index → exposure risk level
+/**
+ * Categorizes UV index as sun exposure risk level.
+ * @param {number} uvIndex - UV index value
+ * @returns {string} Risk level: 'Low', 'Moderate', 'High', 'Very High', or 'Extreme'
+ */
 const uvIndexLevel = (uvIndex) => {
   if (!isValidNumber(uvIndex, 0)) return "";
 
@@ -42,7 +63,13 @@ const uvIndexLevel = (uvIndex) => {
   ]);
 };
 
-// Visibility → clarity level (depends on unit system)
+/**
+ * Categorizes visibility distance as clarity/air quality level.
+ * Uses unit-specific thresholds (miles vs kilometers).
+ * @param {number} visibility - Distance value in specified units
+ * @param {string} distanceUnit - Unit system: 'mi' (miles) or 'km' (kilometers)
+ * @returns {string} Clarity level: 'Near Zero', 'Very Poor', 'Poor', 'Moderate', 'Good', or 'Very Clear'
+ */
 const visibilityLevel = (visibility, distanceUnit) => {
   if (!isValidNumber(visibility, 0)) return "";
   if (typeof distanceUnit !== "string") return "";
@@ -69,13 +96,23 @@ const visibilityLevel = (visibility, distanceUnit) => {
   return pickLevel(visibility, rules[distanceUnit]);
 };
 
-// Public mapping used by UI to resolve metric → interpretation function
+/**
+ * Maps measurement types to their categorization functions.
+ * Used by UI components to dynamically resolve appropriate level interpreters.
+ */
 export const levelGetters = {
   humidity: humidityLevel,
   uvIndex: uvIndexLevel,
   visibility: visibilityLevel,
 };
 
+/**
+ * Categorizes Air Quality Index (AQI) value as health risk with associated color coding.
+ * AQI ranges: 0-50 (Good), 51-100 (Moderate), 101-150 (Unhealthy Sensitive), 151-200 (Unhealthy), 201-300 (Very Unhealthy), 300+ (Hazardous)
+ *
+ * @param {number} aqi - Air Quality Index value
+ * @returns {Object} Object with 'category' (string) and 'categoryColor' (hex code) properties
+ */
 export const getAQICategory = (aqi) => {
   if (!isValidNumber(aqi, 0)) return "";
 

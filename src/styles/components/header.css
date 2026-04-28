@@ -1,10 +1,4 @@
-/* src/styles/components/header.css */
-
-/* =========================
-   BASE
-   ========================= */
-
-/* Header component styles (logo, search form, status display) */
+/* Header component: logo, search form, date display */
 
 .header {
   height: fit-content;

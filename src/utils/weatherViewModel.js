@@ -1,16 +1,16 @@
 // src/utils/weatherViewModel.js
 
-/**
- * Builds UI-ready weather data structure from raw API response.
- * Used by components for rendering sections (header, sidebar, hero, insights).
- */
-
 import { isSameHour } from "date-fns";
 
-// Function to process the weather data received from the API
+/**
+ * Processes raw weather API data into a UI-friendly view model.
+ *
+ * @param {Object} data - Raw weather API response.
+ * @returns {Object} Structured weather data for UI components.
+ */
 export function processWeatherData(data) {
-  const currentConditions = data.currentConditions; // current weather conditions
-  const today = data.days[1]; // today’s forecast
+  const currentConditions = data.currentConditions;
+  const today = data.days[1]; // // index 1 because index 0 is yesterday
 
   // Yesterday, today and tomorrow
   const daysAroundToday = data.days.slice(0, 3);
@@ -80,8 +80,10 @@ export function processWeatherData(data) {
 }
 
 /**
- * Builds a centered 39-hour window around current time
- * from hourly forecast data.
+ * Builds a 39-hour forecast window centered on the current hour.
+ *
+ * @param {Array<Object>} days - Array of day objects containing hourly forecasts.
+ * @returns {Array<Object>} 39-hour window of hourly forecast data.
  */
 function getCentered39hWindow(days) {
   const hours = days.flatMap((d) => d.hours);

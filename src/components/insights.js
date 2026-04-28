@@ -56,11 +56,15 @@ export function renderInsights(processedData) {
   updateAstro(processedData.astronomy, astroMode);
 }
 
+/**
+ * Updates wind statistics display (speed, direction, gust) for a specific hour.
+ * Converts wind direction to degrees and formats speed with appropriate unit suffix.
+ * @param {Object} hour - Hourly weather data object containing windspeed, winddir, windgust
+ */
 function renderWindStatsForHour(hour) {
   const values = [hour.windspeed, hour.winddir, hour.windgust];
 
   elements.windStatsValue.forEach((value, index) => {
-    // Clear existing values
     value.innerHTML = "";
 
     if (values[index] === hour.winddir) value.innerHTML = `${hour.winddir}°`;
@@ -69,40 +73,50 @@ function renderWindStatsForHour(hour) {
   });
 }
 
+/**
+ * Updates the astronomy display with sun or moon rise/set times and visual representation.
+ * Toggles between sun and moon display modes, updates trajectory chart, and renders appropriate icons.
+ * @param {Object} astroData - Astronomy data containing timezone and sun/moon objects
+ * @param {string} astroObject - Celestial object to display ('sun' or 'moon'), defaults to 'sun'
+ */
 export function updateAstro(astroData, astroObject = "sun") {
   const timeZone = astroData.timezone;
-
   astroData = astroData[astroObject];
 
   const capitalizedAstroObject = capitalizeFirstLetter(astroObject);
 
+  // Update title to reflect selected celestial object
   const astroTitle = elements.astroTitle;
   astroTitle.textContent =
     capitalizedAstroObject + "rise" + " & " + capitalizedAstroObject + "set";
 
+  // Update animated position on the trajectory chart
   updateAstroObjectPosition(astroData, astroObject, timeZone);
 
+  // Set line art image (sun vs moon icon)
   const astroObjectLineArt = elements.astroObjectImg;
   astroObjectLineArt.src =
     astroObject === "sun" ? sunLineArtPath : moonLineArtPath;
 
   const eventRiseEl = elements.eventRise;
   const eventSetEl = elements.eventSet;
-
   const eventIcons = getAstroIcons(astroObject);
 
+  // Update rise/set event icons
   const eventRiseIconEl = eventRiseEl.querySelector(".astronomy__event-icon");
   eventRiseIconEl.innerHTML = eventIcons.rise;
 
   const eventSetIconEl = eventSetEl.querySelector(".astronomy__event-icon");
   eventSetIconEl.innerHTML = eventIcons.set;
 
+  // Update rise/set event labels
   const eventRiseLabel = eventRiseEl.querySelector(".astronomy__event-label");
   eventRiseLabel.textContent = capitalizedAstroObject + "rise";
 
   const eventSetLabel = eventSetEl.querySelector(".astronomy__event-label");
   eventSetLabel.textContent = capitalizedAstroObject + "set";
 
+  // Update rise/set times
   const eventRiseTime = eventRiseEl.querySelector(".astronomy__event-time");
   eventRiseTime.textContent = astroData.rise ?? "N/A";
 
@@ -110,12 +124,21 @@ export function updateAstro(astroData, astroObject = "sun") {
   eventSetTime.textContent = astroData.set ?? "N/A";
 }
 
+/**
+ * Initializes insights component by attaching toggle handler for sun/moon switch.
+ * Calls provided callback whenever user toggles between celestial objects.
+ * @param {Function} onToggle - Callback function that receives current astro mode ('sun' or 'moon')
+ */
 export function initInsights(onToggle) {
   elements?.toggleAstro.addEventListener("change", () => {
     onToggle(getAstroMode());
   });
 }
 
+/**
+ * Determines which celestial object to display based on toggle state.
+ * @returns {string} 'moon' if toggle is checked, 'sun' if unchecked
+ */
 function getAstroMode() {
   return elements.toggleAstro.checked ? "moon" : "sun";
 }

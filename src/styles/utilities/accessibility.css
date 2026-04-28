@@ -1,4 +1,4 @@
-/* src/styles/utilities/accessibility.css */
+/* Screen reader only text (hidden from view but accessible to assistive tech) */
 
 .visually-hidden {
   position: absolute;

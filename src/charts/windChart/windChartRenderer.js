@@ -1,13 +1,17 @@
 // src/charts/windChart/windChartRenderer.js
 
+// DOM element cache for wind chart SVG containers
 const elements = {
   histogramContainer: document.querySelector(".wind-chart__histogram"),
   polyLine: document.querySelector(".wind-chart__trendline"),
 };
 
 /**
- * Renders wind speed bars on the chart histogram.
- * @param {Array} models - Array of wind chart model objects
+ * Renders wind speed bars as SVG rectangles in the histogram container.
+ * The current hour (middle of 39-hour window) is highlighted in white.
+ * Other bars have varying opacity based on wind speed.
+ *
+ * @param {Array} models - Array of wind chart model objects with x, bar, and isCurrent properties
  */
 export function renderWindBars(models) {
   elements.histogramContainer.replaceChildren();
@@ -32,12 +36,14 @@ export function renderWindBars(models) {
 }
 
 /**
- * Creates an SVG rectangle element for a wind speed bar.
- * @param {number} x - X position
- * @param {number} y - Y position
- * @param {number} height - Bar height
- * @param {number} opacity - Fill opacity
- * @returns {SVGRectElement} The created bar element
+ * Creates an SVG rectangle element representing a wind speed bar.
+ * Uses explicit SVG namespace for proper rendering.
+ *
+ * @param {number} x - X position of bar
+ * @param {number} y - Y position (top of bar)
+ * @param {number} height - Bar height in pixels
+ * @param {number} opacity - Fill opacity (0-1)
+ * @returns {SVGRectElement} Configured rectangle element
  */
 function createBar(x, y, height, opacity) {
   const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -52,8 +58,10 @@ function createBar(x, y, height, opacity) {
 }
 
 /**
- * Renders the wind gust trend line as a polyline.
- * @param {Array} models - Array of wind chart model objects
+ * Renders wind gust trend line as an SVG polyline connecting peak wind gusts.
+ * Shows maximum wind gust potential above the average wind speed bars.
+ *
+ * @param {Array} models - Array of wind chart model objects with lineY positions
  */
 export function renderWindLine(models) {
   const points = models.map((model) => `${model.x},${model.lineY}`).join(" ");

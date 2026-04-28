@@ -1,11 +1,6 @@
 /* src/styles/layout.css */
 
-/* =========================
-   LAYOUT
-   ========================= */
-
-/* App layout grid (sidebar + header + main content regions) */
-
+/* Main app layout: sidebar on left, header and main content on right */
 body {
   overflow-y: auto;
   display: grid;
@@ -32,7 +27,7 @@ body {
   padding: 1rem;
 }
 
-/* Main content layout (hero + insights + forecast sections) */
+/* Main content grid: hero section and insights + forecast below */
 main {
   grid-area: main;
   display: grid;
@@ -44,7 +39,6 @@ main {
   gap: 1rem;
 }
 
-/* App layout grid (sidebar + header + main content regions) */
 .weather-hero {
   grid-area: hero;
   display: flex;

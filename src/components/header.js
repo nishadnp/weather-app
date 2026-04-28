@@ -2,26 +2,31 @@
 
 import { format } from "date-fns";
 
-// Lazily resolves DOM node (avoids null issues on import)
+// DOM element lazy getter pattern to avoid null reference errors on import
 const dom = {
   get dateEl() {
     return document.querySelector(".header__date > p");
   },
 };
 
+/**
+ * Renders the header date display with formatted date (e.g., "Monday, 24 April 2026").
+ * @param {Object} processedData - Processed weather data containing date string
+ */
 export function renderHeader(processedData) {
-  // Safely access date from processed weather data
   const day = processedData?.date;
-
   const el = dom.dateEl;
 
-  // Exit early if required data or DOM element is missing
   if (!day || !el) return;
 
   el.textContent = formatDate(day);
 }
 
-// Converts API date → readable UI format
+/**
+ * Formats API date string to human-readable format.
+ * @param {string} dateString - ISO date string from API (e.g., "2026-04-24")
+ * @returns {string} Formatted date (e.g., "Monday, 24 April 2026")
+ */
 function formatDate(dateString) {
   return format(new Date(dateString), "EEEE, d MMMM yyyy");
 }

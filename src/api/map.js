@@ -2,7 +2,7 @@
 
 import { currentTimeVibe } from "../ui/controller";
 
-// API config (constants only), freeze prevents accidental changes to config values at runtime
+// API configuration constants for Geoapify static map service
 const API_CONFIG = Object.freeze({
   baseURL: "https://maps.geoapify.com/v1/staticmap",
   apiKey: process.env.GEOAPIFY_KEY,
@@ -11,6 +11,13 @@ const API_CONFIG = Object.freeze({
   zoom: 9,
 });
 
+/**
+ * Generates Geoapify static map URL with weather-appropriate style and location marker.
+ * Map style adapts to time-of-day for visual consistency with background imagery.
+ *
+ * @param {string} coordinates - Coordinates in "longitude,latitude" format
+ * @returns {string} Complete Geoapify API URL with all parameters
+ */
 export function getMapURL(coordinates) {
   const styleName = currentTimeVibe ? mapStyle[currentTimeVibe] : "osm-bright";
 
@@ -19,10 +26,14 @@ export function getMapURL(coordinates) {
   return url;
 }
 
+/**
+ * Maps time-of-day vibes to appropriate Geoapify map styles.
+ * Creates visual cohesion between background image and map display.
+ */
 const mapStyle = {
   "night moody": "dark-matter",
   "sunrise dawn": "klokantech-basic",
   "morning light": "osm-bright",
   "afternoon sun": "osm-bright",
-  "sunset golden hour": "dark-matter", // Dark-matter looks great with gold
+  "sunset golden hour": "dark-matter",
 };

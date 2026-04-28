@@ -2,7 +2,10 @@
 
 import { format, subDays, addDays } from "date-fns";
 
-// API config (constants only), freeze prevents accidental changes to config values at runtime
+/**
+ * Visual Crossing Weather API configuration.
+ * Elements array includes standard weather metrics plus air quality (AQI) and astronomy data.
+ */
 const API_CONFIG = Object.freeze({
   baseURL:
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline",
@@ -11,11 +14,18 @@ const API_CONFIG = Object.freeze({
     "add:aqius,add:pm2p5,add:o3,add:pm10,add:no2,add:moonrise,add:moonset",
 });
 
-// Fetch weather data for a location
+/**
+ * Fetches 7-day weather forecast (yesterday to +5 days) for a given location.
+ * Supports multiple unit systems (metric, US, UK).
+ * Returns raw API response with all weather metrics and hourly data.
+ *
+ * @param {string} locationQuery - Location name, address, or "lat,lon" coordinates
+ * @param {string} unitSystem - Unit system: 'metric', 'us', or 'uk'
+ * @returns {Promise<Object>} Raw API response with weather data
+ * @throws {Error} On network failure or API error
+ */
 export function getWeather(locationQuery, unitSystem) {
-  // This function can be expanded to fetch weather data based on user input or other parameters
-
-  // trim + encode ensures safe URL input (e.g. "New York" works)
+  // Safely encode location for URL (handles special characters, spaces)
   const safeLocation = encodeURIComponent(locationQuery.trim());
 
   const dateRange = get7DayRangeFromYesterday();
@@ -30,7 +40,13 @@ export function getWeather(locationQuery, unitSystem) {
   });
 }
 
-// Builds API date range string for 7 days window (yesterday to +5 days from today); Format: yyyy-MM-dd/yyyy-MM-dd
+/**
+ * Builds 7-day date range from yesterday through +5 days from today.
+ * Format: yyyy-MM-dd/yyyy-MM-dd
+ * Supports retrieving past, present, and future weather data.
+ *
+ * @returns {string} Date range string in format "YYYY-MM-DD/YYYY-MM-DD"
+ */
 function get7DayRangeFromYesterday() {
   const startDateObj = subDays(new Date(), 1); // yesterday
   const endDateObj = addDays(startDateObj, 6);

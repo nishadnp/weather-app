@@ -1,12 +1,7 @@
 /* eslint-disable css/font-family-fallbacks */
-/* src/styles/base.css */
+/* Global reset and base typography */
 
-/* =========================
-   BASE
-   ========================= */
-
-/* Global reset + base typography */
-
+/* Font families */
 :root {
   --font-sans:
     system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -15,12 +10,14 @@
   --font-inter: "Inter", var(--font-sans);
 }
 
+/* Universal reset */
 *,
 ::before,
 ::after {
   box-sizing: border-box;
 }
 
+/* Base element styles */
 html,
 body {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);

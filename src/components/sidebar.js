@@ -38,10 +38,10 @@ const elements = (() => {
 })();
 
 export function renderSideBar(processedData) {
-  // Keys for the weather parameters to be displayed in the highlight cards
+  // Weather metrics to display in highlight cards
   const keys = ["precipprob", "humidity", "uvIndex", "visibility"];
 
-  // Units for the different weather parameters
+  // Unit suffixes for each metric
   const units = {
     precipprob: "%",
     humidity: "%",
@@ -51,20 +51,18 @@ export function renderSideBar(processedData) {
 
   const highlightCards = elements.highlightCards;
 
-  // Loop through the highlight cards and populate them with the corresponding weather data
+  // Populate each highlight card with metric value and interpretive footnote
   highlightCards.forEach((highlightCard, index) => {
-    // Clear existing data in the card before adding new data
-
     const key = keys[index];
     const value = processedData[key];
     const unit = units[key];
 
-    // Main value display
+    // Display numeric value with unit
     const dataText = highlightCard.querySelector(".highlights-card__data");
     dataText.textContent = value + " " + unit;
     dataText.style.fontSize = "1.5rem";
 
-    // Secondary label (contextual interpretation of the value)
+    // Display interpretive label (e.g., "Moderate" for humidity)
     const footnote = highlightCard.querySelector(".highlights-card__footnote");
     if (key === "precipprob") {
       footnote.textContent =
@@ -82,35 +80,41 @@ export function renderSideBar(processedData) {
   mapImg.src = getMapURL(processedData.coordinates);
 }
 
+/**
+ * Updates Air Quality Index display with numeric value, category label, and color coding.
+ * @param {number} aqi - Air Quality Index value
+ */
 function setAQI(aqi) {
   elements.aqiValue.textContent = aqi;
 
   const aqiCategory = getAQICategory(aqi);
-
   const aqiCategoryEl = elements.aqiCategory;
 
   aqiCategoryEl.textContent = aqiCategory.category;
   aqiCategoryEl.style.color = aqiCategory.categoryColor;
 }
 
+/**
+ * Populates pollutant concentration pills with values and appropriate units.
+ * Uses data-pollutant attribute to identify each pollutant.
+ * Units: µg/m³ for particulate matter (PM), ppb for gas pollutants.
+ * @param {Object} pollutants - Object with pollutant keys and concentration values
+ */
 function setPollutants(pollutants) {
   const aqiPills = elements.aqiPills;
 
   aqiPills.forEach((pill) => {
     const pillValueEl = pill.querySelector(".air-quality__pill-value");
-
     const pollutantUnit = document.createElement("span");
     pollutantUnit.classList.add("air-quality__unit");
 
-    // Get the pollutant key from the element's data attribute
     const key = pillValueEl.dataset.pollutant;
-
-    // Skip update if no pollutant key is defined
     if (!key) return;
 
-    // Display pollutant value or fallback if unavailable
+    // Display concentration value or N/A if unavailable
     pillValueEl.textContent = pollutants[key] ?? "N/A";
 
+    // PM pollutants use µg/m³, gas pollutants use ppb
     pollutantUnit.innerHTML =
       key.slice(0, 2) === "pm" ? " µg/m<sup>3</sup>" : " ppb";
     pillValueEl.appendChild(pollutantUnit);

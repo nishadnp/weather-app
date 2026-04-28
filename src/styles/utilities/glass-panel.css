@@ -1,4 +1,4 @@
-/* src/styles/utilities/glass-panel.css */
+/* Glassmorphism effect: frosted glass appearance with blur and transparency */
 
 .glass-panel {
   background: rgba(255, 255, 255, 0.05);
@@ -7,7 +7,6 @@
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  /* Use a transition so hover effects are smooth across all components */
   transition:
     background 0.3s ease,
     border-color 0.3s ease;

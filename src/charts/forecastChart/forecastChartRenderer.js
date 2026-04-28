@@ -1,5 +1,6 @@
 // src/charts/forecastChart/forecastChartRenderer.js
 
+// DOM element cache for forecast chart SVG paths
 const elements = (() => {
   const elCache = {};
 
@@ -25,8 +26,12 @@ const elements = (() => {
 })();
 
 /**
- * Builds SVG path using quadratic bezier curves for smooth temperature trendlines.
- * Uses current point as control point, then draws to midpoint between current and next.
+ * Builds smooth SVG path string using quadratic bezier curves.
+ * Creates a continuous trendline that connects temperature points.
+ * Uses current point as control point, endpoint at midpoint between current and next point.
+ *
+ * @param {Array} coords - Array of coordinate objects with x and y properties
+ * @returns {string} SVG path definition (d attribute value)
  */
 const pathString = (coords) => {
   if (coords.length === 0) return "";
@@ -42,7 +47,7 @@ const pathString = (coords) => {
     d += ` Q ${curr.x} ${curr.y}, ${midX} ${(curr.y + next.y) / 2}`;
   }
 
-  // Final point
+  // Complete path with final point
   const last = coords[coords.length - 1];
   d += ` L ${last.x} ${last.y}`;
 
@@ -50,7 +55,11 @@ const pathString = (coords) => {
 };
 
 /**
- * Renders high/low temperature trendlines and fill area to SVG paths.
+ * Renders high/low temperature trendlines and fill area between them.
+ * Creates a visual "ribbon" showing temperature range across the forecast period.
+ * Includes native SVG tooltips for accessibility.
+ *
+ * @param {Object} model - Chart model containing highestTempCoords and lowestTempCoords arrays
  */
 export function renderPaths(model) {
   const { highestTempCoords, lowestTempCoords } = model;
@@ -62,13 +71,11 @@ export function renderPaths(model) {
 
   if (elements.highPath) {
     elements.highPath.setAttribute("d", highLineD);
-    // Native SVG Tooltip
     elements.highPath.innerHTML = `<title>High Temperature Trendline</title>`;
   }
 
   if (elements.lowPath) {
     elements.lowPath.setAttribute("d", lowLineD);
-    // Native SVG Tooltip
     elements.lowPath.innerHTML = `<title>Low Temperature Trendline</title>`;
   }
 

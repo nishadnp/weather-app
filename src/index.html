@@ -5,6 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon assets for multiple platforms -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -27,7 +28,7 @@
     <title>Day & Night Weather - Your Guide Through Every Sky</title>
   </head>
   <body>
-    <!-- App header: logo + city search + date display -->
+    <!-- Header: logo, search, and date -->
     <header class="header">
       <div class="header__branding">
         <img
@@ -42,7 +43,7 @@
           <span class="header__slogan">Your Guide Through Every Sky</span>
         </div>
       </div>
-      <!-- Simple form to input location for fetching weather data -->
+      <!-- Location search form and unit selector -->
       <form class="header__form glass-panel">
         <div class="header__controls">
           <button
@@ -140,7 +141,7 @@
       </div>
     </header>
 
-    <!-- Sidebar: weather highlights (wind, humidity, UV, visibility) -->
+    <!-- Sidebar with weather highlights and air quality -->
     <aside class="sidebar glass-panel">
       <section class="highlights">
         <h3 class="highlights__title">Today Highlights</h3>
@@ -243,7 +244,7 @@
     </aside>
 
     <main>
-      <!-- Main weather display: current conditions + temperature + location -->
+      <!-- Current weather display with temperature and location -->
       <section class="weather-hero">
         <div class="weather-hero__info">
           <div class="weather-hero__header">
@@ -283,7 +284,7 @@
         <p class="weather-hero__time"></p>
       </section>
 
-      <!-- Insight Cards: Wind Status and Sun Twilight timings -->
+      <!-- Wind and astronomy insights with charts -->
       <section class="insight-cards">
         <article class="insight glass-panel">
           <header class="insight__header insight__header--wind">
@@ -331,8 +332,6 @@
         </article>
 
         <article class="insight glass-panel">
-          <!-- Sun module: sunrise/sunset visualization (static now, animated later) -->
-
           <header class="insight__header insight__header--astronomy">
             <h3 class="insight__title insight__title--astronomy">
               Sunrise & Sunset
@@ -433,7 +432,7 @@
         </article>
       </section>
 
-      <!-- 5-day forecast (dynamic weather data rendering) -->
+      <!-- 5-day forecast with temperature chart -->
       <section class="forecast">
         <ul class="forecast__list">
           <li class="forecast__item">

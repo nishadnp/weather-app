@@ -1,10 +1,5 @@
-/* src/styles/components/nextdaysForecast.css */
+/* 5-day forecast cards with temperature chart */
 
-/* =========================
-   FORECAST
-   ========================= */
-
-/* Forecast: multi-day weather cards layout */
 .forecast__list {
   padding: 0;
   width: 100%;

@@ -1,10 +1,9 @@
-/* src/styles/main.css */
+/* Main stylesheet entry - cascade priority determined by import order */
 
 @import "./base.css";
 
 @import "./layout.css";
 
-/* Component-based stylesheet entry (import order defines cascade priority) */
 @import "./components/header.css";
 @import "./components/sidebar.css";
 @import "./components/weatherHero.css";
@@ -16,11 +15,12 @@
 @import "./utilities/customDropdown.css";
 @import "./utilities/toggleSwitch.css";
 
-@import "@fontsource/inter/300.css"; /* Light - for 39-hour labels */
-@import "@fontsource/inter/400.css"; /* Regular: Default body, Date, Search */
-@import "@fontsource/inter/500.css"; /* Medium: Current Time, Condition */
-@import "@fontsource/inter/600.css"; /* Semi-bold - for data metrics */
+/* Typography - font weights define visual hierarchy */
+@import "@fontsource/inter/300.css"; /* Light */
+@import "@fontsource/inter/400.css"; /* Regular */
+@import "@fontsource/inter/500.css"; /* Medium */
+@import "@fontsource/inter/600.css"; /* Semi-bold */
 
-@import "@fontsource/plus-jakarta-sans/600.css"; /* Semi-Bold: H-L Capsules */
-@import "@fontsource/plus-jakarta-sans/700.css"; /* Bold: City Name, Titles */
-@import "@fontsource/plus-jakarta-sans/800.css"; /* Extra Bold: Main Temperature */
+@import "@fontsource/plus-jakarta-sans/600.css"; /* Semi-Bold */
+@import "@fontsource/plus-jakarta-sans/700.css"; /* Bold */
+@import "@fontsource/plus-jakarta-sans/800.css"; /* Extra Bold */

@@ -1,11 +1,5 @@
 /* eslint-disable css/no-invalid-properties */
-/* src/styles/components/weatherHero.css */
-
-/* =========================
-   WEATHER HERO COMPONENT
-   ========================= */
-
-/* Weather hero: primary weather display (condition, temperature, location) */
+/* Weather hero: main weather display with condition, temperature, location */
 
 .weather-hero__info {
   padding: 0;

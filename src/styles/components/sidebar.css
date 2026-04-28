@@ -1,10 +1,5 @@
-/* src/styles/components/sidebar.css */
+/* Sidebar: weather metrics highlights, air quality, location map */
 
-/* =========================
-   SIDEBAR COMPONENT
-   ========================= */
-
-/* Sidebar: highlights grid (weather metrics cards) */
 .sidebar {
   border-radius: 30px;
 }
@@ -20,7 +15,7 @@
   font-size: 1.05rem;
 }
 
-/* highlights grid (component-level layout) */
+/* Weather metrics grid */
 .highlights__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
