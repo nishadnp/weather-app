@@ -36,7 +36,7 @@
   transition:
     opacity 0.2s ease,
     filter 0.2s ease;
-  cursor: pointer;
+  cursor: help;
 }
 
 .wind-chart__bar:hover {
@@ -52,7 +52,7 @@
   stroke-width: 1.5;
   stroke-dasharray: 4 2; /* 4px dash, 2px gap */
   stroke-linecap: round;
-  cursor: pointer;
+  cursor: help;
 }
 
 .wind-chart__trendline:hover {

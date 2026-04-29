@@ -21,7 +21,8 @@ export function renderWindBars(models) {
       model.x,
       model.bar.y,
       model.bar.height,
-      model.bar.opacity
+      model.bar.opacity,
+      model.bar.title
     );
 
     bar.classList.add("wind-chart__bar");
@@ -43,16 +44,23 @@ export function renderWindBars(models) {
  * @param {number} y - Y position (top of bar)
  * @param {number} height - Bar height in pixels
  * @param {number} opacity - Fill opacity (0-1)
+ * @param {string} title - Tooltip text for the bar
  * @returns {SVGRectElement} Configured rectangle element
  */
-function createBar(x, y, height, opacity) {
+function createBar(x, y, height, opacity, title) {
   const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-
   bar.classList.add("wind-chart__bar");
   bar.setAttribute("x", x);
   bar.setAttribute("y", y);
   bar.setAttribute("height", height);
   bar.setAttribute("fill", `rgba(255, 255, 255, ${opacity})`);
+
+  const titleElement = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "title"
+  );
+  titleElement.textContent = "Wind Speed: " + title;
+  bar.appendChild(titleElement);
 
   return bar;
 }
@@ -65,6 +73,13 @@ function createBar(x, y, height, opacity) {
  */
 export function renderWindLine(models) {
   const points = models.map((model) => `${model.x},${model.lineY}`).join(" ");
+
+  const titleElement = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "title"
+  );
+  titleElement.textContent = "Wind Gusts Trend Line";
+  elements.polyLine.appendChild(titleElement);
 
   elements.polyLine.setAttribute("points", points);
 }

@@ -41,6 +41,7 @@ export function getWindChartModel(hours, config) {
         y: barY,
         height: barHeight,
         opacity: 0.2 + (safeSpeed / config.visualMax) * 0.4, // Opacity increases with speed
+        title: `${hour.windspeed.toFixed(1)} ${unitSystem === "metric" ? "km/h" : "mph"}`, // Tooltip text for bar
       },
       lineY,
       isCurrent: index === midIndex, // Highlight current hour
