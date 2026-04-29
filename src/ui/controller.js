@@ -67,6 +67,20 @@ export function initController() {
     if (!astroData) return;
     updateAstro(astroData, astroMode);
   });
+
+  // On initial load, attempt to get user's location and fetch weather. Fallback to default city if denied.
+  (async () => {
+    try {
+      const locationQuery = await getCurrentLocation();
+      await fetchAndRender(locationQuery, "metric");
+    } catch (error) {
+      console.error(error);
+      console.warn(
+        "Location access denied or failed. Loading default city: Dubai."
+      );
+      await fetchAndRender("Dubai", "metric");
+    }
+  })();
 }
 
 /**
