@@ -17,7 +17,9 @@ import {
   renderInsights,
   renderNextDaysForecast,
 } from "../components";
+
 import { getTimeVibe } from "../utils/time-fns";
+import { loadingOverlayState } from "../utils/loadingOverlay";
 
 const domElements = (() => {
   // Lazy cache for stable DOM nodes (queried once)
@@ -152,17 +154,27 @@ function bindLocationButton() {
  * @param {string} locationQuery - Location name or coordinates for weather API
  * @param {string} unitSystem - Unit system ('metric', 'us', 'uk') for temperature/speed
  */
-function fetchAndRender(locationQuery, unitSystem) {
-  getWeather(locationQuery, unitSystem)
-    .then(processWeatherData)
-    .then((processedData) => {
-      currentProcessedData = processedData;
-      updateBackgroundImage(currentProcessedData.conditions);
-      renderAll(currentProcessedData);
-    })
-    .catch((error) => {
-      console.error("Weather fetch failed:", error);
-    });
+async function fetchAndRender(locationQuery, unitSystem) {
+  try {
+    // Show loading overlay while fetching and processing data
+    loadingOverlayState(true);
+
+    const rawData = await getWeather(locationQuery, unitSystem);
+    const processedData = processWeatherData(rawData);
+
+    currentProcessedData = processedData;
+
+    // Update background image and render UI in parallel for faster load times
+    await Promise.all([
+      updateBackgroundImage(currentProcessedData.conditions),
+      renderAll(currentProcessedData),
+    ]);
+  } catch (error) {
+    console.error("Weather fetch failed:", error);
+  } finally {
+    // Hide loading overlay after all operations complete (success or failure)
+    loadingOverlayState(false);
+  }
 }
 
 /**

@@ -10,6 +10,7 @@
 @import "./components/insights.css";
 @import "./components/nextdaysForecast.css";
 
+@import "./utilities/loader.css";
 @import "./utilities/glass-panel.css";
 @import "./utilities/accessibility.css";
 @import "./utilities/customDropdown.css";
