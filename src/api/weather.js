@@ -24,7 +24,7 @@ const API_CONFIG = Object.freeze({
  * @returns {Promise<Object>} Raw API response with weather data
  * @throws {Error} On network failure or API error
  */
-export function getWeather(locationQuery, unitSystem) {
+export async function getWeather(locationQuery, unitSystem) {
   // Safely encode location for URL (handles special characters, spaces)
   const safeLocation = encodeURIComponent(locationQuery.trim());
 
@@ -32,12 +32,18 @@ export function getWeather(locationQuery, unitSystem) {
 
   const url = `${API_CONFIG.baseURL}/${safeLocation}/${dateRange}?unitGroup=${unitSystem}&elements=${API_CONFIG.elements}&key=${API_CONFIG.apiKey}&contentType=json`;
 
-  return fetch(url).then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  });
+  const fetchResponse = await fetch(url);
+
+  if (!fetchResponse.ok) {
+    const errorBodyRaw = await fetchResponse.text();
+    const errorBody = errorBodyRaw?.trim()
+      ? errorBodyRaw
+      : "No additional error information";
+    throw new Error(
+      `API error: ${fetchResponse.status} ${fetchResponse.statusText} / ${errorBody}`
+    );
+  }
+  return fetchResponse.json();
 }
 
 /**
