@@ -1,16 +1,25 @@
-// src/utility/capitalizeFirstLetter.js
+// src/utils/capitalizeFirstLetter.js
 
 /**
- * Capitalizes the first letter of a string.
+ * Capitalizes the first letter of a string or each string in an array.
  *
- * If the input is not a string or is an empty string,
- * an empty string is returned.
+ * - If a string is provided, returns the string with its first character capitalized.
+ * - If an array is provided, returns a new array with each valid string capitalized.
+ * - Non-string or empty values are converted to an empty string.
  *
- * @param {string} str - The string to capitalize.
- * @returns {string} A new string with the first character converted to uppercase,
- * or an empty string if the input is invalid.
+ * @param {input|input[]} input - A string or an array of strings.
+ * @returns {input|input[]} A capitalized string or an array of capitalized strings.
  */
-export function capitalizeFirstLetter(str) {
-  if (typeof str !== "string" || str.length === 0) return "";
-  return str[0].toUpperCase() + str.slice(1);
+export function capitalizeFirstLetter(input) {
+  if (Array.isArray(input)) {
+    return input.map((item) =>
+      typeof item === "string" && item.length > 0
+        ? item[0].toUpperCase() + item.slice(1)
+        : ""
+    );
+  }
+
+  if (typeof input !== "string" || input.length === 0) return "";
+
+  return input[0].toUpperCase() + input.slice(1);
 }
